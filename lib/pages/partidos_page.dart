@@ -29,7 +29,7 @@ class PartidosPage extends StatelessWidget {
             builder: (context, PartidosProvider, child) => PartidosProvider
                     .isLoading
                 ? const Center(
-                    child: CircularProgressIndicator( color: Color(0xff4ecf84),),
+                    child: CircularProgressIndicator(),
                   )
                 : Expanded(
                     child: ListView.builder(
@@ -152,7 +152,21 @@ class PartidosPage extends StatelessWidget {
                                                               '${plays?.team1.tName}',
                                                               style:
                                                                   SafeGoogleFont(
-                                                                ),
+                                                                'Nunito',
+                                                                fontSize:
+                                                                    10 * ffem,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w800,
+                                                                height: 1.3625 *
+                                                                    ffem /
+                                                                    fem,
+                                                                color: Color(
+                                                                    0xff000000),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ),
                                                       ),
                                             
                                                       Positioned(
