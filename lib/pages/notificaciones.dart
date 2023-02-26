@@ -36,6 +36,7 @@ class MyNotification extends StatelessWidget {
         // ],
         backgroundColor: Colors.transparent,
         elevation: 0,
+        centerTitle: true,
         title:const Center(
           child: Text(
               'Notificaciones',

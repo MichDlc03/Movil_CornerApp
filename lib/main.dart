@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         '/settinsProfile': (context) => const SettingsProfilePage(),  
         '/edid_Profile': (context) => const EdidProfile(),
         // '/vista_torneo': (context) => const VistasTorneo(torneo: null,),
-        '/resumenPartidos' :(context) => const ResumenResultados()
+        // '/resumenPartidos' :(context) => const ResumenResultados()
       },
       debugShowCheckedModeBanner: false,
       home:const NavigationExample(), 

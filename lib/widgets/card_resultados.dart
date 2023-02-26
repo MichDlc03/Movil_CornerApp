@@ -166,7 +166,7 @@ class _cardResultadosState extends State<cardResultados> {
                 child: Center(
                   child: TextButton(
                     onPressed: () {
-                      ResumenResultados();
+                      // ResumenResultados();
                     },
                     child: Text(
                       'Detalles',

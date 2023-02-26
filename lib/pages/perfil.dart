@@ -1,59 +1,59 @@
 import 'package:flutter/material.dart';
 import 'package:liga_corner_app/dtos/providers/teams_provider.dart';
-import 'package:liga_corner_app/dtos/responses/requests/players_responses.dart';
-import 'package:liga_corner_app/dtos/responses/requests/teams_responses_dto.dart';
+import 'package:liga_corner_app/utils.dart';
 import 'package:liga_corner_app/widgets/config_Responsive.dart';
 import 'package:provider/provider.dart';
 
 class PagePerfil extends StatelessWidget {
-  final TeamsResponsDto? teams;
-  const PagePerfil({super.key, required this.teams});
+  const PagePerfil({super.key});
 
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => TeamsProvider()..fetchTeams(),
+      create: (context) => PlayersProvider()..fetchUser(),
       child: Scaffold(
         backgroundColor: const Color(0xFFE8E8E8),
         appBar: AppBar(
-          backgroundColor: const Color(0xFFE8E8E8),
+          backgroundColor: const Color(0xFF4ECF84),
           elevation: 0,
-          toolbarHeight: 80,
-          title: const Text(
-            'Perfil',
-            style: TextStyle(color: Colors.black),
+          title: Text(
+            'Jugadores',
+            style: SafeGoogleFont('Nunito', color: Colors.white),
           ),
           centerTitle: true,
         ),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Consumer<TeamsProvider>(
-                builder: (context, teamsProvider, child) =>
-                    teamsProvider.isLoanding
-                        ? Center(
-                            child: CircularProgressIndicator(
-                                color: Colors.blueAccent.shade200),
-                          )
-                        : Expanded(
-                            child: GridView.builder(
-                              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-                                itemCount: teamsProvider.players?.length,
-                                itemBuilder: (context, index) {
-                                  final player = teamsProvider.players?[index];
-                                  return Card(
-                                    color: Colors.blue.shade100,
-                                    child: ListTile(
-                                      splashColor: Colors.black12,
-                                      onTap: () {},
-                                      title: Text('${player?.firstName}'
-                                          '  '
-                                          '${player?.lastName}}'),
-                                    ),
-                                  );
-                                })
-                                )
-                                )
+            Consumer<PlayersProvider>(
+                builder: (context, PlayersProvider, child) => PlayersProvider
+                        .isLoading
+                    ? const Center(
+                        child:
+                            CircularProgressIndicator(color: Color(0xFF4ECF84)),
+                      )
+                    : Expanded(
+                        child: ListView.builder(
+                          itemCount: PlayersProvider.players?.length,
+                          itemBuilder: (context, index) {
+                            final player = PlayersProvider.players?[index];
+                            final photo = player?.photos[index];
+                            return Column(
+                              children: [
+                                const Card(color: Colors.amber),
+                                ListTile(
+                                  trailing: Text('${player?.team.tName}'),
+                                  leading: Image.network(
+                                      'https://ligasabatinadefutbol.com.mx/media/bearleague/${photo?.phFilename}'),
+                                  title: Text(
+                                      '${player?.firstName} ${player?.lastName}'),
+                                  subtitle: Text('${player?.position.pName}'),
+                                ),
+                              ],
+                            );
+                          },
+                        ),
+                      ))
           ],
         ),
       ),
