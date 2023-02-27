@@ -22,9 +22,39 @@ class ResultadosPage extends StatelessWidget {
         create: (context) => PartidosProvider()..fetchUsers(),
         //operador de cascada
         child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 20),
+            padding: const EdgeInsets.symmetric(vertical: 10),
             child:
                 Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+              Card(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10)),
+                child: ClipPath(
+                  // ignore: sort_child_properties_last
+                  child: Container(
+                    decoration: const BoxDecoration(
+                        border: Border(
+                            left: BorderSide(
+                                color: Color(0xff4ecf84), width: 10))),
+                    child: Padding(
+                      padding: const EdgeInsets.all(5),
+                      child: Row(
+                        children: [
+                          Text(
+                            'Encuentros finalizados ',
+                            style: SafeGoogleFont('Nunito',
+                                color: const Color(0XFf595959),
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  clipper: ShapeBorderClipper(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5))),
+                ),
+              ),
               Consumer<PartidosProvider>(
                   builder: (context, PartidosProvider, child) =>
                       PartidosProvider.isLoading

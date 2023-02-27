@@ -26,6 +26,39 @@ class PartidosPage extends StatelessWidget {
           body: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 10),
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10)),
+                  child: ClipPath(
+                    // ignore: sort_child_properties_last
+                    child: Container(
+                      decoration: const BoxDecoration(
+                          border: Border(
+                              left: BorderSide(
+                                  color: Color(0xff4ecf84), width: 10))),
+                      child: Padding(
+                        padding: const EdgeInsets.all(5),
+                        child: Row(
+                          children: [
+                            Text(
+                              'Proximos encuentros',
+                              style: SafeGoogleFont('Nunito',
+                                  color: const Color(0XFf595959),
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    clipper: ShapeBorderClipper(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5))),
+                  ),
+                ),
+              ),
               Consumer<PartidosProvider>(
                 builder: (context, PartidosProvider, child) => PartidosProvider
                         .isLoading
@@ -35,7 +68,7 @@ class PartidosPage extends StatelessWidget {
                       )
                     : Expanded(
                         child: Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 20),
+                          padding: const EdgeInsets.symmetric(vertical: 0),
                           child: ListView.builder(
                               itemCount: PartidosProvider.partidos?.length,
                               itemBuilder: (context, index) {
@@ -184,7 +217,7 @@ class PartidosPage extends StatelessWidget {
                                                     context,
                                                     MaterialPageRoute(
                                                         builder: (context) =>
-                                                            DetedallesPartido(
+                                                            DetetallesPartido(
                                                                 partidos:
                                                                     plays)));
                                               },

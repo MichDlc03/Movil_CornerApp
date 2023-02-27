@@ -45,7 +45,7 @@ class _MyTabBarState extends State with SingleTickerProviderStateMixin {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 10),
           child: SizedBox(
             height: MediaQuery.of(context).size.height,
             child: Column(
@@ -90,7 +90,11 @@ class _MyTabBarState extends State with SingleTickerProviderStateMixin {
                 Expanded(
                     child: TabBarView(
                   controller: tabController,
-                  children: const [PartidosPage(), TorneosPages(), ResultadosPage()],
+                  children: const [
+                    PartidosPage(),
+                    TorneosPages(),
+                    ResultadosPage()
+                  ],
                 )),
               ],
             ),
