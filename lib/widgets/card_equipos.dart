@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:liga_corner_app/pages/perfil.dart';
 import 'package:liga_corner_app/utils.dart';
 
-class CardTorneos extends StatelessWidget {
+class CardEquipos extends StatelessWidget {
   final String UrlImage;
   final String name;
   final String city;
   //final String numberplayers;
-  const CardTorneos({
+  const CardEquipos({
     Key? key,
     required this.UrlImage,
     required this.name,
@@ -36,6 +36,7 @@ class CardTorneos extends StatelessWidget {
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 10),
+                // ignore: avoid_unnecessary_containers
                 child: Container(
                   child: Expanded(
                     child: Image.network(
@@ -47,6 +48,7 @@ class CardTorneos extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              // ignore: avoid_unnecessary_containers
               child: Container(
                 child: Row(
                   children: [
@@ -116,13 +118,14 @@ class CardTorneos extends StatelessWidget {
               ),
             ),
             Container(
+              height: 20,
               color: const Color(0xFF4ECF84),
               child: TextButton(
                 onPressed: () {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const PagePerfil()));
+                          builder: (context) => const PlayersPage()));
                 },
                 child: Center(
                     child: Text(

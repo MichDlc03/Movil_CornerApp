@@ -14,16 +14,14 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return   MaterialApp(
+    return MaterialApp(
       initialRoute: '/',
       routes: {
-        '/settinsProfile': (context) => const SettingsProfilePage(),  
+        '/settinsProfile': (context) => const SettingsProfilePage(),
         '/edid_Profile': (context) => const EdidProfile(),
-        // '/vista_torneo': (context) => const VistasTorneo(torneo: null,),
-        // '/resumenPartidos' :(context) => const ResumenResultados()
       },
       debugShowCheckedModeBanner: false,
-      home:const NavigationExample(), 
+      home: const NavigationExample(),
     );
   }
 }

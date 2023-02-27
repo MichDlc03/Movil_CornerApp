@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:liga_corner_app/dtos/providers/torneo_provider.dart';
 import 'package:liga_corner_app/dtos/responses/requests/torneo_response_dto.dart';
 import 'package:liga_corner_app/utils.dart';
-import 'package:liga_corner_app/widgets/card_torneos.dart';
+import 'package:liga_corner_app/widgets/card_titile.dart';
+import 'package:liga_corner_app/widgets/card_equipos.dart';
 import 'package:provider/provider.dart';
 
 class VistasTorneo extends StatelessWidget {
@@ -29,38 +30,9 @@ class VistasTorneo extends StatelessWidget {
         backgroundColor: const Color(0xffE8E8E8),
         body: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
-              child: Card(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10)),
-                child: ClipPath(
-                  // ignore: sort_child_properties_last
-                  child: Container(
-                    decoration: const BoxDecoration(
-                        border: Border(
-                            left: BorderSide(
-                                color: Color(0xff4ecf84), width: 10))),
-                    child: Padding(
-                      padding: const EdgeInsets.all(5),
-                      child: Row(
-                        children: [
-                          Text(
-                            'Equipos participantes en el torneo ',
-                            style: SafeGoogleFont('Nunito',
-                                color: const Color(0XFf595959),
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  clipper: ShapeBorderClipper(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(5))),
-                ),
-              ),
+            const Padding(
+              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+              child: CardTitle(),
             ),
             Consumer<TorneoProvider>(
               builder: (context, TorneoProvider, child) => TorneoProvider
@@ -85,7 +57,7 @@ class VistasTorneo extends StatelessWidget {
                                 'https://cdn.pixabay.com/photo/2015/01/21/00/56/soccer-606235_960_720.jpg';
                             final name = team?.tName;
 
-                            return CardTorneos(
+                            return CardEquipos(
                                 UrlImage: logo,
                                 name: '$name',
                                 city: ciudad); // return GestureDetector(

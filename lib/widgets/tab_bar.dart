@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:liga_corner_app/pages/resultados.dart';
 import 'package:liga_corner_app/pages/resultados_page.dart';
 import 'package:liga_corner_app/pages/torneos_pages.dart';
 
@@ -29,16 +28,18 @@ class _MyTabBarState extends State with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    double baseWidth = 400;
+    double fem = MediaQuery.of(context).size.width / baseWidth;
+    double ffem = fem * 0.50;
     // ignore: todo
     // TODO: implement build
     return Scaffold(
       backgroundColor: const Color(0xFFE8E8E8),
       appBar: AppBar(
         elevation: 0,
-        toolbarHeight: 80,
         title: Image.asset(
           'images/logo.png',
-          height: 90,
+          height: 50,
           width: 120,
         ),
         backgroundColor: Colors.transparent,
@@ -50,7 +51,7 @@ class _MyTabBarState extends State with SingleTickerProviderStateMixin {
             height: MediaQuery.of(context).size.height,
             child: Column(
               children: [
-                const SizedBox(height: 20),
+                const SizedBox(height: 5),
                 Container(
                   //height: 50,
                   width: MediaQuery.of(context).size.height,

@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:liga_corner_app/dtos/providers/teams_provider.dart';
+import 'package:liga_corner_app/dtos/providers/players_provider.dart';
 import 'package:liga_corner_app/utils.dart';
 import 'package:liga_corner_app/widgets/config_Responsive.dart';
 import 'package:provider/provider.dart';
 
-class PagePerfil extends StatelessWidget {
-  const PagePerfil({super.key});
-
+class PlayersPage extends StatelessWidget {
+  const PlayersPage({super.key});
   @override
   Widget build(BuildContext context) {
+    double baseWidth = 400;
+    double fem = MediaQuery.of(context).size.width / baseWidth;
+    double ffem = fem * 0.97;
     return ChangeNotifierProvider(
       create: (context) => PlayersProvider()..fetchUser(),
       child: Scaffold(
@@ -40,9 +42,8 @@ class PagePerfil extends StatelessWidget {
                             final photo = player?.photos[index];
                             return Column(
                               children: [
-                                const Card(color: Colors.amber),
                                 ListTile(
-                                  trailing: Text('${player?.team.tName}'),
+                                  // trailing: Text('${player?.team.tName}'),
                                   leading: Image.network(
                                       'https://ligasabatinadefutbol.com.mx/media/bearleague/${photo?.phFilename}'),
                                   title: Text(

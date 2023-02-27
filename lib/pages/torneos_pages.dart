@@ -9,6 +9,9 @@ class TorneosPages extends StatelessWidget {
   const TorneosPages({super.key});
   @override
   Widget build(BuildContext context) {
+    double baseWidth = 400;
+    double fem = MediaQuery.of(context).size.width / baseWidth;
+    double ffem = fem * 0.97;
     return ChangeNotifierProvider(
         create: (context) => TorneoProvider()..fetchUsers(),
         //operador de cascada
@@ -88,8 +91,6 @@ class TorneosPages extends StatelessWidget {
                                                         image:
                                                             'https://cdn.pixabay.com/photo/2015/01/21/00/56/soccer-606235_960_720.jpg'))
                                               ],
-                                              //    Image.network(
-                                              //       'https://cdn.pixabay.com/photo/2015/01/21/00/56/soccer-606235_960_720.jpg'),
                                             ) // ),
                                             ),
                                       )),

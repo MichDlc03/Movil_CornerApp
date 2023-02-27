@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:liga_corner_app/dtos/providers/partidos_provider.dart';
 import 'package:liga_corner_app/pages/detalle_partido_page.dart';
 import 'package:liga_corner_app/utils.dart';
+import 'package:liga_corner_app/widgets/card_titile.dart';
 import 'package:provider/provider.dart';
 
 //import '../dtos/responses/requests/partidos_response_dto.dart';
@@ -15,7 +16,7 @@ class PartidosPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double baseWidth = 500;
+    double baseWidth = 400;
     double fem = MediaQuery.of(context).size.width / baseWidth;
     double ffem = fem * 0.97;
     return ChangeNotifierProvider(
@@ -26,38 +27,9 @@ class PartidosPage extends StatelessWidget {
           body: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 10),
-                child: Card(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10)),
-                  child: ClipPath(
-                    // ignore: sort_child_properties_last
-                    child: Container(
-                      decoration: const BoxDecoration(
-                          border: Border(
-                              left: BorderSide(
-                                  color: Color(0xff4ecf84), width: 10))),
-                      child: Padding(
-                        padding: const EdgeInsets.all(5),
-                        child: Row(
-                          children: [
-                            Text(
-                              'Proximos encuentros',
-                              style: SafeGoogleFont('Nunito',
-                                  color: const Color(0XFf595959),
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    clipper: ShapeBorderClipper(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5))),
-                  ),
-                ),
+             const Padding(
+                padding: EdgeInsets.symmetric(vertical: 10),
+                child: CardTitlePartidos(),
               ),
               Consumer<PartidosProvider>(
                 builder: (context, PartidosProvider, child) => PartidosProvider

@@ -31,6 +31,7 @@ class PlayersResponseDto {
     required this.position,
   });
 
+
   final int id;
   final String firstName;
   final String lastName;
@@ -46,7 +47,7 @@ class PlayersResponseDto {
   final DateTime updatedAt;
   final List<Photo> photos;
   final Team team;
-  final Position position;
+  final dynamic position;
 
   factory PlayersResponseDto.fromMap(Map<String, dynamic> json) =>
       PlayersResponseDto(
@@ -65,7 +66,10 @@ class PlayersResponseDto {
         updatedAt: DateTime.parse(json["updated_at"]),
         photos: List<Photo>.from(json["photos"].map((x) => Photo.fromMap(x))),
         team: Team.fromMap(json["team"]),
-        position: Position.fromMap(json["position"]),
+        position: Position.fromMap(json["position"]), 
+        /**
+         * Position y Team pueden ser null, no puede hacer el map
+         */
       );
 
   Map<String, dynamic> toMap() => {
