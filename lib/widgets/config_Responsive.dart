@@ -41,4 +41,5 @@ class SizeConfig {
   static double safeBlockSizeVertical(double percentage) {
     return _safeBlockVertical * percentage;
   }
+
 }

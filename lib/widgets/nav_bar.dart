@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:liga_corner_app/pages/notificaciones.dart';
-import 'package:liga_corner_app/pages/perfil.dart';
 import 'package:liga_corner_app/widgets/tab_bar.dart';
 
 class NavigationExample extends StatefulWidget {
@@ -15,13 +14,12 @@ class _NavigationExampleState extends State<NavigationExample> {
 
   @override
   Widget build(BuildContext context) {
+    double baseWidth = 400;
+    double fem = MediaQuery.of(context).size.width / baseWidth;
+    double ffem = fem * 0.50;
     return Scaffold(
-     
-
       bottomNavigationBar: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10)
-        ),
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
         child: NavigationBar(
           backgroundColor: Colors.white,
           onDestinationSelected: (int index) {
@@ -32,20 +30,23 @@ class _NavigationExampleState extends State<NavigationExample> {
           selectedIndex: currentPageIndex,
           destinations: const <Widget>[
             NavigationDestination(
-              icon: Icon(Icons.home, 
-              color:Color(0xFF4ECF84),
+              icon: Icon(
+                Icons.home,
+                color: Color(0xFF4ECF84),
               ),
               label: 'Home',
             ),
             NavigationDestination(
-              icon: Icon(Icons.notifications,
-              color:Color(0xFF4ECF84),
+              icon: Icon(
+                Icons.notifications,
+                color: Color(0xFF4ECF84),
               ),
               label: 'Notificaciones',
             ),
             NavigationDestination(
-              icon: Icon(Icons.account_circle,
-              color:Color(0xFF4ECF84),
+              icon: Icon(
+                Icons.account_circle,
+                color: Color(0xFF4ECF84),
               ),
               label: 'Perfil',
             ),
@@ -62,7 +63,6 @@ class _NavigationExampleState extends State<NavigationExample> {
           color: const Color(0xFFE8E8E8),
           alignment: Alignment.center,
           child: MyNotification(),
-          
         ),
       ][currentPageIndex],
     );

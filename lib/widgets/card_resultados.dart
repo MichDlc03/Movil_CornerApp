@@ -1,190 +1,160 @@
-// ignore_for_file: camel_case_types, prefer_const_constructors
+// ignore_for_file: sized_box_for_whitespace
+
 import 'package:flutter/material.dart';
+import 'package:liga_corner_app/dtos/responses/requests/partidos_response_dto.dart';
 import 'package:liga_corner_app/pages/resumen_resultados_pages.dart';
 import 'package:liga_corner_app/utils.dart';
 
-class cardResultados extends StatefulWidget {
-  const cardResultados({super.key});
+class CardResultados extends StatelessWidget {
+  const CardResultados({
+    super.key,
+    required this.plays,
+    required this.fem,
+    required this.ffem,
+  });
 
-  @override
-  State<cardResultados> createState() => _cardResultadosState();
-}
+  final PartidosResponseDto? plays;
+  final double fem;
+  final double ffem;
 
-class _cardResultadosState extends State<cardResultados> {
   @override
   Widget build(BuildContext context) {
-    double baseWidth = 400;
+     double baseWidth = 400;
     double fem = MediaQuery.of(context).size.width / baseWidth;
     double ffem = fem * 0.97;
-    return Container(
-      margin: EdgeInsets.fromLTRB(18 * fem, 0 * fem, 19 * fem, 23 * fem),
-      padding: EdgeInsets.fromLTRB(11 * fem, 17 * fem, 12 * fem, 33 * fem),
-      width: double.infinity,
-      decoration: BoxDecoration(
-        color: Color(0xffffffff),
-        borderRadius: BorderRadius.circular(10 * fem),
-        boxShadow: [
-          BoxShadow(
-            color: Color(0x26000000),
-            offset: Offset(0 * fem, 2 * fem),
-            blurRadius: 0 * fem,
+    return Card(
+      elevation: 5,
+      shape: RoundedRectangleBorder(
+          borderRadius:
+              BorderRadius.circular(10)),
+      child: Column(
+        mainAxisAlignment:
+            MainAxisAlignment.center,
+        children: [
+          const SizedBox(
+            height: 5,
+          ),
+          Container(
+              width: double.infinity,
+              decoration: BoxDecoration(
+                color:const Color(0xfff9f9f9),
+                borderRadius:
+                    BorderRadius.circular(10),
+              ),
+              child: Padding(
+                padding:
+                    const EdgeInsets.all(10),
+                child: Column(
+                  children: [
+                    Row(children: [
+                      Container(
+                        width: 50,
+                        height: 50,
+                        child: Image.network(
+                            'https://ligasabatinadefutbol.com.mx/media/bearleague/${plays?.team1.tEmblem}'),
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      // ignore: sized_box_for_whitespace
+                      Container(
+                        width: 150,
+                        height: 30,
+                        child: Text(
+                            '${plays?.team1.tName}'),
+                      ),
+                      const SizedBox(
+                        width: 50,
+                      ),
+                      // ignore: sized_box_for_whitespace
+                      Container(
+                        width: 30,
+                        height: 30,
+                        child: Center(
+                          child: Text(
+                              '${plays?.score1}'),
+                        ),
+                      ),
+                    ]),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Row(children: [
+                      // ignore: sized_box_for_whitespace
+                      Container(
+                        width: 50,
+                        height: 50,
+                        child: Image.network(
+                            'https://ligasabatinadefutbol.com.mx/media/bearleague/${plays?.team2.tEmblem}'),
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      // ignore: sized_box_for_whitespace
+                      Container(
+                        width: 150,
+                        height: 30,
+                        child: Text(
+                            '${plays?.team2.tName}'),
+                      ),
+                      const SizedBox(
+                        width: 50,
+                      ),
+                      Container(
+                        width: 30,
+                        height: 30,
+                        child: Center(
+                          child: Text(
+                              '${plays?.score2}'),
+                        ),
+                      ),
+                    ]),
+                  ],
+                ),
+              )),
+          Container(
+            width: double.infinity,
+            height: 30 * fem,
+            decoration: const BoxDecoration(
+              color: Color(0xff4ecf84),
+              borderRadius: BorderRadius.only(
+                bottomRight:
+                    Radius.circular(10),
+                bottomLeft:
+                    Radius.circular(10),
+              ),
+            ),
+            child: Center(
+              child: TextButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              ResumenResultados(
+                                partidos:
+                                    plays,
+                              )));
+                },
+                child: Text(
+                  'Detalles',
+                  style: SafeGoogleFont(
+                    'Nunito',
+                    fontSize: 15 * ffem,
+                    fontWeight:
+                        FontWeight.w700,
+                    height:
+                        1.3625 * ffem / fem,
+                    color: const Color(
+                        0xFFFFFFFF),
+                  ),
+                ),
+              ),
+            ),
           ),
         ],
       ),
-      child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
-        SizedBox(
-          height: 23 * fem,
-        ),
-        Container(
-          width: double.infinity,
-          decoration: BoxDecoration(
-            color: Color(0xfff9f9f9),
-            borderRadius: BorderRadius.circular(5 * fem),
-            boxShadow: [
-              BoxShadow(
-                color: Color(0x3f000000),
-                offset: Offset(0 * fem, 4 * fem),
-                blurRadius: 2 * fem,
-              ),
-            ],
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Container(
-                padding:
-                    EdgeInsets.fromLTRB(12 * fem, 15 * fem, 16 * fem, 11 * fem),
-                width: double.infinity,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Container(
-                      margin: EdgeInsets.fromLTRB(
-                          0 * fem, 0 * fem, 0 * fem, 6 * fem),
-                      width: double.infinity,
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Container(
-                            margin: EdgeInsets.fromLTRB(
-                                0 * fem, 0 * fem, 10 * fem, 0 * fem),
-                            width: 30 * fem,
-                            height: 30 * fem,
-                            decoration: BoxDecoration(
-                              color: Color(0xffd9d9d9),
-                            ),
-                          ),
-                          Container(
-                            margin: EdgeInsets.fromLTRB(
-                                0 * fem, 1 * fem, 175 * fem, 0 * fem),
-                            child: Text(
-                              'Club A',
-                              style: SafeGoogleFont(
-                                'Nunito',
-                                fontSize: 15 * ffem,
-                                fontWeight: FontWeight.w700,
-                                height: 1.3625 * ffem / fem,
-                                color: Color(0xff000000),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            margin: EdgeInsets.fromLTRB(
-                                0 * fem, 1 * fem, 0 * fem, 0 * fem),
-                            child: Text(
-                              '2',
-                              style: SafeGoogleFont(
-                                'Nunito',
-                                fontSize: 15 * ffem,
-                                fontWeight: FontWeight.w800,
-                                height: 1.3625 * ffem / fem,
-                                color: Color(0xff4ecf84),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      width: double.infinity,
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Container(
-                            margin: EdgeInsets.fromLTRB(
-                                0 * fem, 0 * fem, 10 * fem, 0 * fem),
-                            width: 30 * fem,
-                            height: 30 * fem,
-                            decoration: BoxDecoration(
-                              color: Color(0xffd9d9d9),
-                            ),
-                          ),
-                          Container(
-                            margin: EdgeInsets.fromLTRB(
-                                0 * fem, 1 * fem, 175 * fem, 0 * fem),
-                            child: Text(
-                              'Club B',
-                              style: SafeGoogleFont(
-                                'Nunito',
-                                fontSize: 15 * ffem,
-                                fontWeight: FontWeight.w700,
-                                height: 1.3625 * ffem / fem,
-                                color: Color(0xff000000),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            margin: EdgeInsets.fromLTRB(
-                                0 * fem, 1 * fem, 0 * fem, 0 * fem),
-                            child: Text(
-                              '1',
-                              style: SafeGoogleFont(
-                                'Nunito',
-                                fontSize: 15 * ffem,
-                                fontWeight: FontWeight.w800,
-                                height: 1.3625 * ffem / fem,
-                                color: Color(0xff4ecf84),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                width: double.infinity,
-                height: 30 * fem,
-                decoration: BoxDecoration(
-                  color: Color(0xff4ecf84),
-                  borderRadius: BorderRadius.only(
-                    bottomRight: Radius.circular(5 * fem),
-                    bottomLeft: Radius.circular(5 * fem),
-                  ),
-                ),
-                child: Center(
-                  child: TextButton(
-                    onPressed: () {
-                      ResumenResultados();
-                    },
-                    child: Text(
-                      'Detalles',
-                      style: SafeGoogleFont(
-                        'Nunito',
-                        fontSize: 15 * ffem,
-                        fontWeight: FontWeight.w700,
-                        height: 1.3625 * ffem / fem,
-                        color: Color(0xff595959),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ]),
     );
   }
 }
+

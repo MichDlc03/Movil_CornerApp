@@ -1,7 +1,9 @@
 // ignore_for_file: camel_case_types
 import 'package:flutter/material.dart';
 import 'package:liga_corner_app/dtos/providers/partidos_provider.dart';
+import 'package:liga_corner_app/pages/detalle_partido_page.dart';
 import 'package:liga_corner_app/utils.dart';
+import 'package:liga_corner_app/widgets/card_titile.dart';
 import 'package:provider/provider.dart';
 
 //import '../dtos/responses/requests/partidos_response_dto.dart';
@@ -11,7 +13,7 @@ class PartidosPage extends StatelessWidget {
   const PartidosPage({
     super.key, //required this.partidos
   });
-  
+
   @override
   Widget build(BuildContext context) {
     double baseWidth = 400;
@@ -21,284 +23,200 @@ class PartidosPage extends StatelessWidget {
         create: (context) => PartidosProvider()..fetchUsers(),
         //operador de cascada
         child: Scaffold(
-            backgroundColor: const Color(0XFFE8E8E8),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Consumer<PartidosProvider>(
-            builder: (context, PartidosProvider, child) => PartidosProvider
-                    .isLoading
-                ? const Center(
-                    child: CircularProgressIndicator(),
-                  )
-                : Expanded(
-                    child: ListView.builder(
-                        itemCount: PartidosProvider.partidos?.length,
-                        itemBuilder: (context, index) {
-                          final plays = PartidosProvider.partidos?[index];
-
-                          return Container(
-                                margin: EdgeInsets.fromLTRB(
-                                    22 * fem, 0 * fem, 15 * fem, 18 * fem),
-                                width: double.infinity,
-                                decoration: BoxDecoration(
-                                  color: const Color(0xffffffff),
-                                  borderRadius: BorderRadius.circular(5 * fem),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: const Color(0x3f000000),
-                                      offset: Offset(0 * fem, 4 * fem),
-                                      blurRadius: 2 * fem,
-                                    ),
-                                  ],
-                                ),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Container(
-                                      padding: EdgeInsets.fromLTRB(20 * fem,
-                                          26 * fem, 0 * fem, 24 * fem),
-                                      width: double.infinity,
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        children: [
-                                          Container(
-                                            margin: EdgeInsets.fromLTRB(0 * fem,
-                                                0 * fem, 20 * fem, 17 * fem),
-                                            height: 42 * fem,
+          backgroundColor: const Color(0XFFE8E8E8),
+          body: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+             const Padding(
+                padding: EdgeInsets.symmetric(vertical: 10),
+                child: CardTitlePartidos(),
+              ),
+              Consumer<PartidosProvider>(
+                builder: (context, PartidosProvider, child) => PartidosProvider
+                        .isLoading
+                    ? const Center(
+                        child:
+                            CircularProgressIndicator(color: Color(0xFF4ECF84)),
+                      )
+                    : Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 0),
+                          child: ListView.builder(
+                              itemCount: PartidosProvider.partidos?.length,
+                              itemBuilder: (context, index) {
+                                final plays = PartidosProvider.partidos?[index];
+                                // const SizedBox(
+                                //   height: 10,
+                                // );
+                                return Padding(
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 5),
+                                  child: Card(
+                                    elevation: 5,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(10)),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              vertical: 5),
+                                          child: Container(
                                             child: Row(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.center,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
                                               children: [
-                                                Container(
-                                                  margin: EdgeInsets.fromLTRB(
-                                                      0 * fem,
-                                                      0 * fem,
-                                                      54 * fem,
-                                                      0 * fem),
-                                                  width: 50 * fem,
-                                                  height: 42 * fem,
-                                                  child: Image.network(
-                                                      '${plays?.team1.tEmblem}'),
+                                                Column(
+                                                  children: [
+                                                    Container(
+                                                      width: 80,
+                                                      height: 70,
+                                                      child: Image.network(
+                                                          'https://ligasabatinadefutbol.com.mx/media/bearleague/${plays?.team1.tEmblem}'),
+                                                    ),
+                                                  ],
+                                                ),
+                                                const SizedBox(
+                                                  width: 40,
                                                 ),
                                                 Container(
-                                                  margin: EdgeInsets.fromLTRB(
-                                                      0 * fem,
-                                                      0 * fem,
-                                                      56 * fem,
-                                                      0 * fem),
-                                                  width: 59 * fem,
-                                                  height: double.infinity,
-                                                  decoration: BoxDecoration(
-                                                    border: Border.all(
-                                                        color:
-                                                            Color(0xffc2c2c2)),
-                                                    color: Color(0xffffffff),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            5 * fem),
-                                                  ),
+                                                  // decoration: BoxDecoration(
+                                                  // border: Border.all(color: Colors.black, width: 3 ),
+                                                  // ),
+                                                  width: 40,
+                                                  height: 50,
                                                   child: Center(
                                                     child: Text(
                                                       'VS',
                                                       style: SafeGoogleFont(
-                                                        'Nunito',
-                                                        fontSize: 22 * ffem,
-                                                        fontWeight:
-                                                            FontWeight.w800,
-                                                        height:
-                                                            1.3625 * ffem / fem,
-                                                        color:
-                                                            Color(0xff000000),
-                                                      ),
+                                                          'Nunito',
+                                                          fontSize: 20,
+                                                          fontWeight:
+                                                              FontWeight.bold),
                                                     ),
                                                   ),
                                                 ),
-                                                Container(
-                                                  width: 50 * fem,
-                                                  height: 42 * fem,
-                                                  child: Image.network(
-                                                      '${plays?.team2.tEmblem}'),
+                                                const SizedBox(
+                                                  width: 40,
+                                                ),
+                                                Column(
+                                                  children: [
+                                                    Container(
+                                                      width: 80,
+                                                      height: 70,
+                                                      child: Image.network(
+                                                          'https://ligasabatinadefutbol.com.mx/media/bearleague/${plays?.team2.tEmblem}'),
+                                                    ),
+                                                  ],
                                                 ),
                                               ],
                                             ),
                                           ),
-                                          SizedBox(
-                                            width: double.infinity,
-                                            height: 39 * fem,
-                                            child: Row(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.center,
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Column(
                                               children: [
-                                                Container(
-                                                  margin: EdgeInsets.fromLTRB(
-                                                      0 * fem,
-                                                      0 * fem,
-                                                      77 * fem,
-                                                      0 * fem),
-                                                  width: 113 * fem,
-                                                  height: double.infinity,
-                                                  child: Stack(
-                                                    children: [
-                                                      Positioned(
-                                                        left: 5 * fem,
-                                                        top: 0 * fem,
-                                                        child: Align(
-                                                          child: SizedBox(
-                                                            width: 55 * fem,
-                                                            height: 23 * fem,
-                                                            child: Text(
-                                                              '${plays?.team1.tName}',
-                                                              style:
-                                                                  SafeGoogleFont(
-                                                                'Nunito',
-                                                                fontSize:
-                                                                    10 * ffem,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w800,
-                                                                height: 1.3625 *
-                                                                    ffem /
-                                                                    fem,
-                                                                color: Color(
-                                                                    0xff000000),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ),
-                                            
-                                                      Positioned(
-                                                        left: 6 * fem,
-                                                        top: 25 * fem,
-                                                        child: Align(
-                                                          child: SizedBox(
-                                                            width: 81 * fem,
-                                                            height: 26 * fem,
-                                                            child: Text(
-                                                              '${plays?.team1.tCity}',
-                                                              style:
-                                                                  SafeGoogleFont(
-                                                                'Nunito',
-                                                                fontSize:
-                                                                    10 * ffem,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w500,
-                                                                height: 1.3625 *
-                                                                    ffem /
-                                                                    fem,
-                                                                color: Color(
-                                                                    0xff000000),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
                                                 SizedBox(
-                                                  width: 113 * fem,
-                                                  height: double.infinity,
-                                                  child: Stack(
-                                                    children: [
-                                                      Positioned(
-                                                        left: 5 * fem,
-                                                        top: 0 * fem,
-                                                        child: Align(
-                                                          child: SizedBox(
-                                                            width: 55 * fem,
-                                                            height: 23 * fem,
-                                                            child: Text(
-                                                              '${plays?.team2.tName}',
-                                                              style:
-                                                                  SafeGoogleFont(
-                                                                'Nunito',
-                                                                fontSize:
-                                                                    10 * ffem,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w800,
-                                                                height: 1.3625 *
-                                                                    ffem /
-                                                                    fem,
-                                                                color: Color(
-                                                                    0xff000000),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                      Positioned(
-                                                        left: 5 * fem,
-                                                        top: 18 * fem,
-                                                        child: Align(
-                                                          child: SizedBox(
-                                                            width: 81 * fem,
-                                                            height: 29 * fem,
-                                                            child: Text(
-                                                              '${plays?.team2.tCity}',
-                                                              style:
-                                                                  SafeGoogleFont(
-                                                                'Nunito',
-                                                                fontSize:
-                                                                    10 * ffem,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w500,
-                                                                height: 1.3625 *
-                                                                    ffem /
-                                                                    fem,
-                                                                color: Color(
-                                                                    0xff000000),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ],
+                                                  width: 80,
+                                                  height: 50,
+                                                  child: Center(
+                                                    child: Text(
+                                                      '${plays?.team1.tName}',
+                                                      textAlign:
+                                                          TextAlign.center,
+                                                      style: SafeGoogleFont(
+                                                          'Nunito',
+                                                          fontWeight:
+                                                              FontWeight.bold),
+                                                    ),
                                                   ),
                                                 ),
                                               ],
                                             ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    Container(
-                                      width: double.infinity,
-                                      height: 41 * fem,
-                                      decoration: BoxDecoration(
-                                        color: Color(0xff4ecf84),
-                                        borderRadius: BorderRadius.only(
-                                          bottomRight: Radius.circular(5 * fem),
-                                          bottomLeft: Radius.circular(5 * fem),
+                                            const SizedBox(
+                                              width: 40,
+                                            ),
+                                            const SizedBox(
+                                              // decoration: BoxDecoration(
+                                              // border: Border.all(color: Colors.black, width: 3 ),
+                                              // ),
+                                              width: 40,
+                                              height: 50,
+                                            ),
+                                            const SizedBox(
+                                              width: 40,
+                                            ),
+                                            Column(
+                                              children: [
+                                                SizedBox(
+                                                  width: 80,
+                                                  height: 50,
+                                                  child: Center(
+                                                    child: Text(
+                                                      '${plays?.team2.tName}',
+                                                      textAlign:
+                                                          TextAlign.center,
+                                                      style: SafeGoogleFont(
+                                                          'Nunito',
+                                                          fontWeight:
+                                                              FontWeight.bold),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            )
+                                          ],
                                         ),
-                                      ),
-                                      child: Center(
-                                        child: Text(
-                                          'Detalles',
-                                          style: SafeGoogleFont(
-                                            'Nunito',
-                                            fontSize: 14 * ffem,
-                                            fontWeight: FontWeight.w800,
-                                            height: 1.3625 * ffem / fem,
-                                            color: Color(0xff595959),
+                                        Container(
+                                          width: double.infinity,
+                                          height: 41 * fem,
+                                          decoration: const BoxDecoration(
+                                            color: Color(0xff4ecf84),
+                                            borderRadius: BorderRadius.only(
+                                              bottomRight: Radius.circular(10),
+                                              bottomLeft: Radius.circular(10),
+                                            ),
+                                          ),
+                                          child: Center(
+                                            child: TextButton(
+                                              onPressed: () {
+                                                Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            DetetallesPartido(
+                                                                partidos:
+                                                                    plays)));
+                                              },
+                                              child: Text(
+                                                'Detalles',
+                                                style: SafeGoogleFont(
+                                                  'Nunito',
+                                                  fontSize: 14 * ffem,
+                                                  fontWeight: FontWeight.w800,
+                                                  height: 1.3625 * ffem / fem,
+                                                  color:
+                                                      const Color(0xffFFFFFF),
+                                                ),
+                                              ),
+                                            ),
                                           ),
                                         ),
-                                      ),
+                                      ],
                                     ),
-                                  ],
-                                ),
-                              );
-                        }),
-                  ),
+                                  ),
+                                );
+                              }),
+                        ),
+                      ),
+              ),
+            ],
           ),
-        ],
-      ),
-      )
-    );
+        ));
   }
 }

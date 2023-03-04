@@ -1,14 +1,15 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'package:flutter/material.dart';
+import 'package:liga_corner_app/pages/perfil.dart';
 import 'package:liga_corner_app/utils.dart';
 
-class CardTorneos extends StatelessWidget {
+class CardEquipos extends StatelessWidget {
   final String UrlImage;
   final String name;
   final String city;
   //final String numberplayers;
-  const CardTorneos({
+  const CardEquipos({
     Key? key,
     required this.UrlImage,
     required this.name,
@@ -18,35 +19,36 @@ class CardTorneos extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double baseWidth = 400;
+    double baseWidth = 500;
     double fem = MediaQuery.of(context).size.width / baseWidth;
     double ffem = fem * 0.97;
     return Card(
       elevation: 10,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-      margin: const EdgeInsets.all(5),
+      margin: const EdgeInsets.all(10),
       color: const Color(0xFFFFFFFF),
       clipBehavior: Clip.hardEdge,
       child: InkWell(
         // splashColor: const Color.fromARGB(255, 255, 255, 255),
-        onTap: () {
-        },
+        onTap: () {},
         child: Column(
           children: [
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 10),
+                // ignore: avoid_unnecessary_containers
                 child: Container(
                   child: Expanded(
                     child: Image.network(
-                      UrlImage,
+                      'https://ligasabatinadefutbol.com.mx/media/bearleague/${UrlImage}',
                     ),
                   ),
                 ),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              // ignore: avoid_unnecessary_containers
               child: Container(
                 child: Row(
                   children: [
@@ -80,7 +82,6 @@ class CardTorneos extends StatelessWidget {
                 ),
               ),
             ),
-
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
               child: Container(
@@ -117,9 +118,15 @@ class CardTorneos extends StatelessWidget {
               ),
             ),
             Container(
-              color: Color(0xFF4ECF84),
+              height: 20,
+              color: const Color(0xFF4ECF84),
               child: TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const PlayersPage()));
+                },
                 child: Center(
                     child: Text(
                   'Detalles',
@@ -128,60 +135,6 @@ class CardTorneos extends StatelessWidget {
                 )),
               ),
             )
-
-            // Padding(
-            //   padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 5),
-            //   child: Container(
-            //     child: Row(
-            //       children: [
-            //         const SizedBox(
-            //           height: 2,
-            //         ),
-            //         Container(
-            //           child: Text(
-            //             'N° judadores: ',
-            //             style: SafeGoogleFont('Nunito',
-            //                 color: const Color(0xFF000000),
-            //                 fontWeight: FontWeight.bold),
-            //           ),
-            //         ),
-            //         Container(
-            //           child: Text(
-            //             numberplayers,
-            //             style: const TextStyle(
-            //               color: Color(0XFF595959),
-            //             ),
-            //           ),
-            //         ),
-            //       ],
-            //     ),
-            //   ),
-            // ),
-            //  const SizedBox(height: 5),
-            //   Container(
-            //     child: Column(
-            //       children: [
-            //         Text(
-            //           city,
-            //           style: const TextStyle(
-            //               color: Color(0xFF595959), fontWeight: FontWeight.bold),
-            //         ),
-            //       ],
-            //     ),
-            //   ),
-            //   const SizedBox(height: 5),
-            //   Container(
-
-            //     child: Column(
-            //       children: [
-            //         Text(
-            //           numberplayers,
-            //           style: const TextStyle(
-            //               color: Color(0xFF595959), fontWeight: FontWeight.bold),
-            //         ),
-            //       ],
-            //     ),
-            //   ),
           ],
         ),
       ),
