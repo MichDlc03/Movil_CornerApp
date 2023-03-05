@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:liga_corner_app/dtos/providers/partidos_provider.dart';
 import 'package:liga_corner_app/dtos/responses/requests/partidos_response_dto.dart';
 import 'package:liga_corner_app/utils.dart';
+import 'package:liga_corner_app/widgets/config_Responsive.dart';
 import 'package:provider/provider.dart';
 
 class ResumenResultados extends StatelessWidget {
@@ -20,7 +21,7 @@ class ResumenResultados extends StatelessWidget {
             appBar: AppBar(
               elevation: 0,
               centerTitle: true,
-              backgroundColor: const Color(0xFF4ECF84),
+              backgroundColor: const Color.fromARGB(223, 19, 175, 27),
               title: Center(
                 child: Text('Resumen de partido',
                     style: SafeGoogleFont('Nunito',
@@ -57,61 +58,70 @@ class CardResumenPartido extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 35),
-      child: Center(
-        child: Column(
-          // mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              width: double.infinity,
-              height: 70,
-              child: Text(
-                '${partidos?.team1.tName}  vs  ${partidos?.team2.tName}',
-                textAlign: TextAlign.center,
-                style: SafeGoogleFont('Nunito',
-                    fontWeight: FontWeight.bold,
-                    fontSize: 24,
-                    color: const Color(0xff595959)),
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Row(
-              // mainAxisAlignment:
-              //     MainAxisAlignment.center,
-              children: [
-                Card(
-                  color: const Color(0xffffffff),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10)),
-                  child: Padding(
-                    padding: const EdgeInsets.all(5),
-                    child: Container(
-                      width: 100,
-                      height: 100,
+    // ignore: sized_box_for_whitespace
+    return Column(
+      // mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        SizedBox(
+          width: SizeConfig.screenWidth,
+          height: 70,
+          child: Text(
+            '${partidos?.team1.tName}  vs  ${partidos?.team2.tName}',
+            textAlign: TextAlign.center,
+            style: SafeGoogleFont('Nunito',
+                fontWeight: FontWeight.bold,
+                fontSize: 24,
+                color: const Color(0xff595959)),
+          ),
+        ),
+        const SizedBox(
+          height: 10,
+        ),
+        SizedBox(
+          width: SizeConfig.screenWidth,
+          height: SizeConfig.blockSizeVertical(10),
+          child: Row(
+            // mainAxisAlignment:
+            //     MainAxisAlignment.center,
+            children: [
+              Card(
+                color: const Color(0xffffffff),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10)),
+                child: Padding(
+                  padding: const EdgeInsets.all(5),
+                  child: SizedBox(
+                    width: SizeConfig.blockSizeHorizontal(28),
+                    height: 100,
+                    child: FittedBox(
+                      fit: BoxFit.cover,
                       child: Image.network(
                           'https://ligasabatinadefutbol.com.mx/media/bearleague/${partidos?.team1.tEmblem}'),
                     ),
                   ),
                 ),
-                const SizedBox(
-                  width: 2,
-                ),
-                Container(
-                  width: 20,
-                  height: 100,
-                  child: Center(
-                    child: Text(
-                      '${partidos?.score1}',
-                      style: SafeGoogleFont('Nunito',
-                          fontWeight: FontWeight.bold, fontSize: 30),
-                      textAlign: TextAlign.center,
-                    ),
+              ),
+              SizedBox(
+                width: SizeConfig.blockSizeHorizontal(2),
+              ),
+              SizedBox(
+                width: 20,
+                height: 100,
+                child: Center(
+                  child: Text(
+                    '${partidos?.score1}',
+                    style: SafeGoogleFont('Nunito',
+                        fontWeight: FontWeight.bold, fontSize: 30),
+                    textAlign: TextAlign.center,
                   ),
                 ),
-                Container(
+              ),
+              SizedBox(
+                width: SizeConfig.blockSizeHorizontal(2),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                child: SizedBox(
                   width: 10,
                   height: 100,
                   child: Center(
@@ -123,146 +133,155 @@ class CardResumenPartido extends StatelessWidget {
                     ),
                   ),
                 ),
-                Container(
-                  width: 20,
-                  height: 100,
-                  child: Center(
-                    child: Text('${partidos?.score2}',
-                        style: SafeGoogleFont('Nunito',
-                            fontWeight: FontWeight.bold, fontSize: 30),
-                        textAlign: TextAlign.center),
-                  ),
+              ),
+              SizedBox(
+                width: SizeConfig.blockSizeHorizontal(2),
+              ),
+              SizedBox(
+                width: 20,
+                height: 100,
+                child: Center(
+                  child: Text('${partidos?.score2}',
+                      style: SafeGoogleFont('Nunito',
+                          fontWeight: FontWeight.bold, fontSize: 30),
+                      textAlign: TextAlign.center),
                 ),
-                const SizedBox(
-                  width: 2,
-                ),
-                Card(
-                  color: const Color(0xffffffff),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10)),
-                  child: Padding(
-                    padding: const EdgeInsets.all(5),
-                    child: Container(
-                      width: 100,
-                      height: 100,
+              ),
+              SizedBox(
+                width: SizeConfig.blockSizeHorizontal(2),
+              ),
+              Card(
+                color: const Color(0xffffffff),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10)),
+                child: Padding(
+                  padding: const EdgeInsets.all(5),
+                  child: SizedBox(
+                    width: SizeConfig.blockSizeHorizontal(28),
+                    height: 100,
+                    child: FittedBox(
+                      fit: BoxFit.cover,
                       child: Image.network(
                           'https://ligasabatinadefutbol.com.mx/media/bearleague/${partidos?.team2.tEmblem}'),
                     ),
                   ),
                 ),
-              ],
-            ),
-            const SizedBox(
-              height: 50,
-            ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Card(
-                  child: ClipPath(
-                    // ignore: sort_child_properties_last
-                    child: Container(
-                      decoration: const BoxDecoration(
-                          border: Border(
-                              left: BorderSide(
-                                  color: Color(0xff4ecf84), width: 10))),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Row(
-                          children: [
-                            Text(
-                              'Fecha: ',
-                              style: SafeGoogleFont('Nunito',
-                                  fontSize: 16, fontWeight: FontWeight.bold),
-                            ),
-                            Text(
-                              '${partidos?.mDate} ',
-                              overflow: TextOverflow.ellipsis,
-                              style: SafeGoogleFont('Nunito',
-                                  color: const Color(0XFf595959)),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    clipper: ShapeBorderClipper(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5))),
-                  ),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Card(
-                  child: ClipPath(
-                    // ignore: sort_child_properties_last
-                    child: Container(
-                      decoration: const BoxDecoration(
-                          border: Border(
-                              left: BorderSide(
-                                  color: Color(0xff4ecf84), width: 10))),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Row(
-                          children: [
-                            Text(
-                              'Hora: ',
-                              style: SafeGoogleFont('Nunito',
-                                  fontSize: 16, fontWeight: FontWeight.bold),
-                            ),
-                            Text(
-                              '${partidos?.mTime} ',
-                              style: SafeGoogleFont('Nunito',
-                                  color: const Color(0XFf595959)),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    clipper: ShapeBorderClipper(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5))),
-                  ),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Card(
-                  child: ClipPath(
-                    // ignore: sort_child_properties_last
-                    child: Container(
-                      decoration: const BoxDecoration(
-                          border: Border(
-                              left: BorderSide(
-                                  color: Color(0xff4ecf84), width: 10))),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Row(
-                          children: [
-                            Text(
-                              'Lugar: ',
-                              style: SafeGoogleFont('Nunito',
-                                  fontSize: 16, fontWeight: FontWeight.bold),
-                            ),
-                            Text(
-                              '${partidos?.mLocation} ',
-                              style: SafeGoogleFont('Nunito',
-                                  color: const Color(0XFf595959)),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    clipper: ShapeBorderClipper(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5))),
-                  ),
-                ),
-              ],
-            )
-          ],
+              ),
+            ],
+          ),
         ),
-      ),
+        const SizedBox(
+          height: 50,
+        ),
+        SizedBox(
+          width: SizeConfig.screenWidth,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Card(
+                child: ClipPath(
+                  // ignore: sort_child_properties_last
+                  child: Container(
+                    decoration: const BoxDecoration(
+                        border: Border(
+                            left: BorderSide(
+                                color: Color.fromARGB(223, 19, 175, 27), width: 15))),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        children: [
+                          Text(
+                            'Fecha: ',
+                            style: SafeGoogleFont('Nunito',
+                                fontSize: 16, fontWeight: FontWeight.bold),
+                          ),
+                          Text(
+                            '${partidos?.mDate} ',
+                            overflow: TextOverflow.ellipsis,
+                            style: SafeGoogleFont('Nunito',
+                                color: const Color(0XFf595959)),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  clipper: ShapeBorderClipper(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5))),
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Card(
+                child: ClipPath(
+                  // ignore: sort_child_properties_last
+                  child: Container(
+                    decoration: const BoxDecoration(
+                        border: Border(
+                            left: BorderSide(
+                                color: Color.fromARGB(223, 19, 175, 27), width: 15))),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        children: [
+                          Text(
+                            'Hora: ',
+                            style: SafeGoogleFont('Nunito',
+                                fontSize: 16, fontWeight: FontWeight.bold),
+                          ),
+                          Text(
+                            '${partidos?.mTime} ',
+                            style: SafeGoogleFont('Nunito',
+                                color: const Color(0XFf595959)),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  clipper: ShapeBorderClipper(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5))),
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Card(
+                child: ClipPath(
+                  // ignore: sort_child_properties_last
+                  child: Container(
+                    decoration: const BoxDecoration(
+                        border: Border(
+                            left: BorderSide(
+                                color: Color.fromARGB(223, 19, 175, 27), width: 15))),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        children: [
+                          Text(
+                            'Lugar: ',
+                            style: SafeGoogleFont('Nunito',
+                                fontSize: 16, fontWeight: FontWeight.bold),
+                          ),
+                          Text(
+                            '${partidos?.mLocation} ',
+                            style: SafeGoogleFont('Nunito',
+                                color: const Color(0XFf595959)),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  clipper: ShapeBorderClipper(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5))),
+                ),
+              ),
+            ],
+          ),
+        )
+      ],
     );
   }
 }

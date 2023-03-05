@@ -1,61 +1,48 @@
 import 'package:flutter/material.dart';
-import 'package:liga_corner_app/dtos/providers/players_provider.dart';
-import 'package:liga_corner_app/utils.dart';
 import 'package:liga_corner_app/widgets/config_Responsive.dart';
-import 'package:provider/provider.dart';
 
-class PlayersPage extends StatelessWidget {
-  const PlayersPage({super.key});
+
+class PagePerfil extends StatefulWidget {
+  const PagePerfil({super.key});
+
+  @override
+  State<PagePerfil> createState() => _PagePerfilState();
+}
+
+class _PagePerfilState extends State<PagePerfil> {
+  bool shadowColor = false;
+  double? scrolledUnderElevation;
   @override
   Widget build(BuildContext context) {
     double baseWidth = 400;
     double fem = MediaQuery.of(context).size.width / baseWidth;
     double ffem = fem * 0.97;
-    return ChangeNotifierProvider(
-      create: (context) => PlayersProvider()..fetchUser(),
-      child: Scaffold(
-        backgroundColor: const Color(0xFFE8E8E8),
-        appBar: AppBar(
-          backgroundColor: const Color(0xFF4ECF84),
-          elevation: 0,
-          title: Text(
-            'Jugadores',
-            style: SafeGoogleFont('Nunito', color: Colors.white),
-          ),
-          centerTitle: true,
+     String _title = 'Ajustes';
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: const Color.fromARGB(223, 19, 175, 27),
+        elevation: 0,
+        toolbarHeight: 80,
+        title:  Text(
+          _title,
+          style: const TextStyle(color: Colors.black),
         ),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Consumer<PlayersProvider>(
-                builder: (context, PlayersProvider, child) => PlayersProvider
-                        .isLoading
-                    ? const Center(
-                        child:
-                            CircularProgressIndicator(color: Color(0xFF4ECF84)),
-                      )
-                    : Expanded(
-                        child: ListView.builder(
-                          itemCount: PlayersProvider.players?.length,
-                          itemBuilder: (context, index) {
-                            final player = PlayersProvider.players?[index];
-                            final photo = player?.photos[index];
-                            return Column(
-                              children: [
-                                ListTile(
-                                  // trailing: Text('${player?.team.tName}'),
-                                  leading: Image.network(
-                                      'https://ligasabatinadefutbol.com.mx/media/bearleague/${photo?.phFilename}'),
-                                  title: Text(
-                                      '${player?.firstName} ${player?.lastName}'),
-                                  subtitle: Text('${player?.position.pName}'),
-                                ),
-                              ],
-                            );
-                          },
-                        ),
-                      ))
-          ],
+        centerTitle: true,
+        scrolledUnderElevation: scrolledUnderElevation,
+        shadowColor: shadowColor ? Theme.of(context).colorScheme.shadow : null,
+      ),
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: const  [
+              CardNotify(),
+              CardLenguaje(),
+              Cardhelp(),
+              InfoApp(),
+              CardLogOut()
+            ],
+          ),
         ),
       ),
     );
@@ -165,7 +152,6 @@ class CardNotify extends StatelessWidget {
   Widget build(BuildContext context) {
     SizeConfig(context);
     return Container(
-      decoration: const BoxDecoration(color: Color(0xFFE8E8E8)),
       margin: const EdgeInsets.all(8),
       width: SizeConfig.screenWidth,
       height: 70,
@@ -179,7 +165,7 @@ class CardNotify extends StatelessWidget {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 10),
               child: Icon(Icons.notifications,
-                  color: Color.fromARGB(188, 20, 237, 67)),
+                  color: Color.fromARGB(223, 19, 175, 27)),
             ),
             Expanded(
               child: Text(
@@ -230,7 +216,6 @@ class CardLenguaje extends StatelessWidget {
   Widget build(BuildContext context) {
     SizeConfig(context);
     return Container(
-      decoration: const BoxDecoration(color: Color(0xFFE8E8E8)),
       margin: const EdgeInsets.all(8),
       width: SizeConfig.screenWidth,
       height: 70,
@@ -240,22 +225,23 @@ class CardLenguaje extends StatelessWidget {
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
-          children: const <Widget>[
-            Padding(
+          children: <Widget>[
+            const Padding(
               padding: EdgeInsets.symmetric(horizontal: 10),
               child:
-                  Icon(Icons.language, color: Color.fromARGB(188, 20, 237, 67)),
+                  Icon(Icons.language, color: Color.fromARGB(223, 19, 175, 27)),
             ),
-            Expanded(
+            const Expanded(
               child: Text(
                 'Idioma',
                 textAlign: TextAlign.justify,
               ),
             ),
-            Padding(
-              padding: EdgeInsets.all(5),
-              child: Icon(Icons.arrow_forward_ios),
-            )
+            IconButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/lenguaje_pages');
+                },
+                icon: const Icon(Icons.arrow_forward_ios))
           ],
         ),
       ),
@@ -270,7 +256,6 @@ class Cardhelp extends StatelessWidget {
   Widget build(BuildContext context) {
     SizeConfig(context);
     return Container(
-      decoration: const BoxDecoration(color: Color(0xFFE8E8E8)),
       margin: const EdgeInsets.all(8),
       width: SizeConfig.screenWidth,
       height: 70,
@@ -284,7 +269,7 @@ class Cardhelp extends StatelessWidget {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 10),
               child: Icon(Icons.help_outline,
-                  color: Color.fromARGB(188, 20, 237, 67)),
+                  color: Color.fromARGB(223, 19, 175, 27)),
             ),
             Expanded(
               child: Text(
@@ -305,12 +290,10 @@ class Cardhelp extends StatelessWidget {
 
 class CardLogOut extends StatelessWidget {
   const CardLogOut({super.key});
-
   @override
   Widget build(BuildContext context) {
     SizeConfig(context);
     return Container(
-      decoration: const BoxDecoration(color: Color(0xFFE8E8E8)),
       margin: const EdgeInsets.all(8),
       width: SizeConfig.screenWidth,
       height: 70,
@@ -324,7 +307,7 @@ class CardLogOut extends StatelessWidget {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 10),
               child:
-                  Icon(Icons.logout, color: Color.fromARGB(188, 20, 237, 67)),
+                  Icon(Icons.logout, color: Color.fromARGB(223, 19, 175, 27)),
             ),
             Expanded(
               child: Text(
@@ -335,6 +318,35 @@ class CardLogOut extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+
+class InfoApp extends StatelessWidget {
+  const InfoApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    SizeConfig(context);
+    return SizedBox(
+      width: SizeConfig.screenWidth,
+      height: 70,
+      child: const Card(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(12)),
+          ),
+          child: AboutListTile(
+            icon: Icon(
+              Icons.info_outline,
+              color: Color.fromARGB(223, 19, 175, 27),
+            ),
+            applicationIcon: FlutterLogo(),
+            applicationLegalese: 'Legalese',
+            applicationName: 'Corner',
+            applicationVersion: '1.0.0',
+            aboutBoxChildren: [Text('Aplicacion creadada en flutter')],
+          )),
     );
   }
 }

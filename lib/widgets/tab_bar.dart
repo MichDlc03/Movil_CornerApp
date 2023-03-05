@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:liga_corner_app/pages/equipos_page.dart';
 import 'package:liga_corner_app/pages/resultados_page.dart';
 import 'package:liga_corner_app/pages/torneos_pages.dart';
 
@@ -17,7 +18,7 @@ class _MyTabBarState extends State with SingleTickerProviderStateMixin {
 
   @override
   void initState() {
-    tabController = TabController(length: 3, vsync: this);
+    tabController = TabController(length: 4, vsync: this);
     super.initState();
   }
 
@@ -31,10 +32,7 @@ class _MyTabBarState extends State with SingleTickerProviderStateMixin {
     double baseWidth = 400;
     double fem = MediaQuery.of(context).size.width / baseWidth;
     double ffem = fem * 0.50;
-    // ignore: todo
-    // TODO: implement build
-    return Scaffold(
-      backgroundColor: const Color(0xFFE8E8E8),
+      return Scaffold(
       appBar: AppBar(
         elevation: 0,
         title: Image.asset(
@@ -42,7 +40,7 @@ class _MyTabBarState extends State with SingleTickerProviderStateMixin {
           height: 50,
           width: 120,
         ),
-        backgroundColor: Colors.transparent,
+        backgroundColor:const Color.fromARGB(223, 19, 175, 27),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -53,22 +51,27 @@ class _MyTabBarState extends State with SingleTickerProviderStateMixin {
               children: [
                 const SizedBox(height: 5),
                 Container(
-                  //height: 50,
                   width: MediaQuery.of(context).size.height,
                   decoration: BoxDecoration(
-                      color: const Color(0xFFD9D9D9),
                       borderRadius: BorderRadius.circular(10)),
                   child: Column(
                     children: [
                       Padding(
                         padding: const EdgeInsets.all(5), //
                         child: TabBar(
+                          overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                            (Set<MaterialState> states) {
+                                if (states.contains(MaterialState.hovered)) {
+                                  return Color.fromARGB(255, 82, 244, 101); //<-- SEE HERE
+                                }
+                            return null; 
+                            },
+                            ),
                           unselectedLabelColor: const Color(0xFF595959),
-                          labelColor: Colors.white,
-                          indicatorColor: const Color(0xFFD9D9D9),
+                          labelColor:const Color.fromARGB(255, 255, 255, 255),
                           indicatorWeight: 2,
                           indicator: BoxDecoration(
-                            color: const Color(0xFF4ECF84),
+                            color: const Color.fromARGB(223, 19, 175, 27),
                             borderRadius: BorderRadius.circular(10),
                           ),
                           controller: tabController,
@@ -82,6 +85,9 @@ class _MyTabBarState extends State with SingleTickerProviderStateMixin {
                             Tab(
                               text: 'Resultados',
                             ),
+                            Tab(
+                              text: 'Equipos',
+                            ),
                           ],
                         ),
                       ),
@@ -94,9 +100,11 @@ class _MyTabBarState extends State with SingleTickerProviderStateMixin {
                   children: const [
                     PartidosPage(),
                     TorneosPages(),
-                    ResultadosPage()
+                    ResultadosPage(),
+                    TeamsPages()
                   ],
-                )),
+                )
+                ),
               ],
             ),
           ),

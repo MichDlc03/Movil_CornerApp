@@ -1,8 +1,9 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'package:flutter/material.dart';
-import 'package:liga_corner_app/pages/perfil.dart';
+import 'package:liga_corner_app/pages/detalle_Equipo.dart';
 import 'package:liga_corner_app/utils.dart';
+import 'package:liga_corner_app/widgets/config_Responsive.dart';
 
 class CardEquipos extends StatelessWidget {
   final String UrlImage;
@@ -118,8 +119,8 @@ class CardEquipos extends StatelessWidget {
               ),
             ),
             Container(
-              height: 20,
-              color: const Color(0xFF4ECF84),
+              height: SizeConfig.blockSizeVertical(4),
+              color: const Color.fromARGB(223, 19, 175, 27),
               child: TextButton(
                 onPressed: () {
                   Navigator.push(

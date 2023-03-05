@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:liga_corner_app/pages/ajustes_page.dart';
 import 'package:liga_corner_app/pages/notificaciones.dart';
 import 'package:liga_corner_app/widgets/tab_bar.dart';
 
@@ -32,23 +33,24 @@ class _NavigationExampleState extends State<NavigationExample> {
             NavigationDestination(
               icon: Icon(
                 Icons.home,
-                color: Color(0xFF4ECF84),
+                color: Color.fromARGB(223, 19, 175, 27),
               ),
+              
               label: 'Home',
             ),
             NavigationDestination(
               icon: Icon(
                 Icons.notifications,
-                color: Color(0xFF4ECF84),
+                color: Color.fromARGB(223, 19, 175, 27),
               ),
               label: 'Notificaciones',
             ),
             NavigationDestination(
               icon: Icon(
-                Icons.account_circle,
-                color: Color(0xFF4ECF84),
+                Icons.settings,
+                color:Color.fromARGB(223, 19, 175, 27),
               ),
-              label: 'Perfil',
+              label: 'Ajustes',
             ),
           ],
         ),
@@ -63,6 +65,11 @@ class _NavigationExampleState extends State<NavigationExample> {
           color: const Color(0xFFE8E8E8),
           alignment: Alignment.center,
           child: MyNotification(),
+        ),
+        Container(
+          color: const Color(0xFFE8E8E8),
+          alignment: Alignment.center,
+          child:const PagePerfil(),
         ),
       ][currentPageIndex],
     );

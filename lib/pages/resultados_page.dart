@@ -3,10 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:liga_corner_app/dtos/providers/partidos_provider.dart';
 import 'package:liga_corner_app/widgets/card_resultados.dart';
 import 'package:liga_corner_app/widgets/card_titile.dart';
+import 'package:liga_corner_app/widgets/config_Responsive.dart';
 import 'package:provider/provider.dart';
-
-//import '../dtos/responses/requests/partidos_response_dto.dart';
-
 class ResultadosPage extends StatelessWidget {
   //final PartidosResponseDto? partidos;
   const ResultadosPage({
@@ -15,6 +13,7 @@ class ResultadosPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig(context);
     double baseWidth = 400;
     double fem = MediaQuery.of(context).size.width / baseWidth;
     double ffem = fem * 0.97;
@@ -43,9 +42,16 @@ class ResultadosPage extends StatelessWidget {
                                     return Padding(
                                       padding: const EdgeInsets.symmetric(
                                           vertical: 5),
-                                      child: CardResultados(plays: plays, fem: fem, ffem: ffem),
+                                      child: CardResultados(
+                                          plays: plays, fem: fem, ffem: ffem),
                                     );
-                                  })))
-            ])));
-  }
-}
+                                  }
+                                )
+                              )
+                            )
+                          ]
+                        )
+                      )
+                    );
+                  }
+                }

@@ -16,9 +16,10 @@ class TorneosPages extends StatelessWidget {
         create: (context) => TorneoProvider()..fetchUsers(),
         //operador de cascada
         child: Scaffold(
-            backgroundColor: const Color(0XFFE8E8E8),
             body:
-                Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                   children: [
               Consumer<TorneoProvider>(
                 builder: (context, TorneoProvider, child) => TorneoProvider
                         .isLoading
@@ -43,7 +44,7 @@ class TorneosPages extends StatelessWidget {
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(10)),
                                 margin: const EdgeInsets.all(10),
-                                color: const Color(0xFF4ECF84),
+                                color: Color.fromARGB(223, 19, 175, 27),
                                 clipBehavior: Clip.hardEdge,
                                 child: InkWell(
                                   splashColor:

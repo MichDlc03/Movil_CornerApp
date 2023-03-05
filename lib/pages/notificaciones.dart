@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:liga_corner_app/core/info_notificaciones.dart';
 import 'package:liga_corner_app/utils.dart';
-import 'package:liga_corner_app/widgets/nav_bar.dart';
 
 class MyNotification extends StatefulWidget {
-  MyNotification({super.key});
+ const MyNotification({super.key});
 
   @override
   State<MyNotification> createState() => _MyNotificationState();
@@ -29,7 +28,6 @@ class _MyNotificationState extends State<MyNotification> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFE8E8E8),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,

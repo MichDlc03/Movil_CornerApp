@@ -1,3 +1,4 @@
+import 'dart:core';
 import 'package:flutter/material.dart';
 import 'package:liga_corner_app/utils.dart';
 
@@ -8,34 +9,51 @@ class CardTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10)),
-      child: ClipPath(
-        // ignore: sort_child_properties_last
-        child: Container(
-          decoration: const BoxDecoration(
-              border: Border(
-                  left: BorderSide(
-                      color: Color(0xff4ecf84), width: 10))),
-          child: Padding(
-            padding: const EdgeInsets.all(5),
-            child: Row(
-              children: [
-                Text(
-                  'Equipos participantes en el torneo ',
-                  style: SafeGoogleFont('Nunito',
-                      color: const Color(0XFf595959),
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold),
-                ),
-              ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical:8.0),
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          boxShadow: [
+              BoxShadow(
+            color: Colors.grey.shade600,
+            spreadRadius: 1,
+            blurRadius: 5,
+            offset: const Offset(0, 3),
+          ),
+         BoxShadow(
+          color: Colors.grey.shade300,
+          offset: const Offset(-5,0),
+         ),
+          ],
+          borderRadius: BorderRadius.circular(12)
+        ),
+        child: ClipPath(
+          // ignore: sort_child_properties_last
+          child: Container(
+            decoration: const BoxDecoration(
+                border: Border(
+                    left: BorderSide(
+                        color: Color.fromARGB(223, 19, 175, 27), width: 15))),
+            child: Padding(
+              padding: const EdgeInsets.all(5),
+              child: Row(
+                children: [
+                  Text(
+                    'Equipos participantes en el torneo ',
+                    style: SafeGoogleFont('Nunito',
+                        color: const Color(0XFf595959),
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
             ),
           ),
+          clipper: ShapeBorderClipper(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5))),
         ),
-        clipper: ShapeBorderClipper(
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(5))),
       ),
     );
   }
@@ -48,34 +66,51 @@ class CardTitleResumen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10)),
-      child: ClipPath(
-        // ignore: sort_child_properties_last
-        child: Container(
-          decoration: const BoxDecoration(
-              border: Border(
-                  left: BorderSide(
-                      color: Color(0xff4ecf84), width: 10))),
-          child: Padding(
-            padding: const EdgeInsets.all(5),
-            child: Row(
-              children: [
-                Text(
-                  'Encuentros finalizados ',
-                  style: SafeGoogleFont('Nunito',
-                      color: const Color(0XFf595959),
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold),
-                ),
-              ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical:8.0),
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          boxShadow: [
+              BoxShadow(
+            color: Colors.grey.shade600,
+            spreadRadius: 1,
+            blurRadius: 5,
+            offset: const Offset(0, 3),
+          ),
+         BoxShadow(
+          color: Colors.grey.shade300,
+          offset: const Offset(-5,0),
+         ),
+          ],
+          borderRadius: BorderRadius.circular(12)
+        ),
+        child: ClipPath(
+          // ignore: sort_child_properties_last
+          child: Container(
+            decoration:  const BoxDecoration(
+                border: Border(
+                    left: BorderSide(
+                        color: Color.fromARGB(223, 19, 175, 27), width: 15))),
+            child: Padding(
+              padding: const EdgeInsets.all(5),
+              child: Row(
+                children: [
+                  Text(
+                    'Encuentros finalizados ',
+                    style: SafeGoogleFont('Nunito',
+                        color: const Color(0XFf595959),
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
             ),
           ),
+          clipper: ShapeBorderClipper(
+          shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(5))),
         ),
-        clipper: ShapeBorderClipper(
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(5))),
       ),
     );
   }
@@ -89,34 +124,51 @@ class CardTitlePartidos extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10)),
-      child: ClipPath(
-        // ignore: sort_child_properties_last
-        child: Container(
-          decoration: const BoxDecoration(
-              border: Border(
-                  left: BorderSide(
-                      color: Color(0xff4ecf84), width: 10))),
-          child: Padding(
-            padding: const EdgeInsets.all(5),
-            child: Row(
-              children: [
-                Text(
-                  'Proximos encuentros',
-                  style: SafeGoogleFont('Nunito',
-                      color: const Color(0XFf595959),
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold),
-                ),
-              ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical:2.0),
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          boxShadow: [
+              BoxShadow(
+            color: Colors.grey.shade600,
+            spreadRadius: 1,
+            blurRadius: 5,
+            offset: const Offset(0, 3),
+          ),
+         BoxShadow(
+          color: Colors.grey.shade300,
+          offset: const Offset(-5,0),
+         ),
+          ],
+          borderRadius: BorderRadius.circular(12)
+        ),
+        child: ClipPath(
+          // ignore: sort_child_properties_last
+          child: Container(
+            decoration:const BoxDecoration(
+                border:  Border(
+                    left: BorderSide(
+                        color: Color.fromARGB(223, 19, 175, 27), width: 15))),
+            child: Padding(
+              padding: const EdgeInsets.all(5),
+              child: Row(
+                children: [
+                  Text(
+                    'Proximos encuentros',
+                    style: SafeGoogleFont('Nunito',
+                        color: const Color(0XFf595959),
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
             ),
           ),
+          clipper: ShapeBorderClipper(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5))),
         ),
-        clipper: ShapeBorderClipper(
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(5))),
       ),
     );
   }
