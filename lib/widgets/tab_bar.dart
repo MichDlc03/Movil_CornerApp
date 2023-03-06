@@ -32,7 +32,7 @@ class _MyTabBarState extends State with SingleTickerProviderStateMixin {
     double baseWidth = 400;
     double fem = MediaQuery.of(context).size.width / baseWidth;
     double ffem = fem * 0.50;
-      return Scaffold(
+    return Scaffold(
       appBar: AppBar(
         elevation: 0,
         title: Image.asset(
@@ -40,7 +40,7 @@ class _MyTabBarState extends State with SingleTickerProviderStateMixin {
           height: 50,
           width: 120,
         ),
-        backgroundColor:const Color.fromARGB(223, 19, 175, 27),
+        backgroundColor: const Color.fromARGB(223, 19, 175, 27),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -52,23 +52,25 @@ class _MyTabBarState extends State with SingleTickerProviderStateMixin {
                 const SizedBox(height: 5),
                 Container(
                   width: MediaQuery.of(context).size.height,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10)),
+                  decoration:
+                      BoxDecoration(borderRadius: BorderRadius.circular(10)),
                   child: Column(
                     children: [
                       Padding(
                         padding: const EdgeInsets.all(5), //
                         child: TabBar(
-                          overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                          overlayColor:
+                              MaterialStateProperty.resolveWith<Color?>(
                             (Set<MaterialState> states) {
-                                if (states.contains(MaterialState.hovered)) {
-                                  return Color.fromARGB(255, 82, 244, 101); //<-- SEE HERE
-                                }
-                            return null; 
+                              if (states.contains(MaterialState.hovered)) {
+                                return Color.fromARGB(
+                                    255, 82, 244, 101); //<-- SEE HERE
+                              }
+                              return null;
                             },
-                            ),
+                          ),
                           unselectedLabelColor: const Color(0xFF595959),
-                          labelColor:const Color.fromARGB(255, 255, 255, 255),
+                          labelColor: const Color.fromARGB(255, 255, 255, 255),
                           indicatorWeight: 2,
                           indicator: BoxDecoration(
                             color: const Color.fromARGB(223, 19, 175, 27),
@@ -103,8 +105,7 @@ class _MyTabBarState extends State with SingleTickerProviderStateMixin {
                     ResultadosPage(),
                     TeamsPages()
                   ],
-                )
-                ),
+                )),
               ],
             ),
           ),

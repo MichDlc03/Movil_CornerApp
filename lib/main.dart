@@ -11,11 +11,7 @@ import 'package:liga_corner_app/widgets/nav_bar_item.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations(
-    [
-      DeviceOrientation.portraitUp,
-      DeviceOrientation.portraitDown
-    ]
-  );
+      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
 
   runApp(const MyApp());
 }
@@ -33,7 +29,7 @@ class MyApp extends StatelessWidget {
         '/edid_Profile': (context) => const EdidProfile(),
       },
       debugShowCheckedModeBanner: false,
-      home: const AnimatedNavBar(),
+      home: const NavigationExample(),
     );
   }
 }
