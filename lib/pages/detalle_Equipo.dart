@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:liga_corner_app/dtos/providers/equipos_provider.dart';
 import 'package:liga_corner_app/dtos/providers/players_provider.dart';
 import 'package:liga_corner_app/utils.dart';
 import 'package:provider/provider.dart';
@@ -11,7 +12,7 @@ class PlayersPage extends StatelessWidget {
     double fem = MediaQuery.of(context).size.width / baseWidth;
     double ffem = fem * 0.97;
     return ChangeNotifierProvider(
-      create: (context) => PlayersProvider()..fetchUser(),
+      create: (context) => EquiposProvider()..fetchUsers(),
       child: Scaffold(
         backgroundColor: const Color(0xFFE8E8E8),
         appBar: AppBar(
@@ -26,8 +27,8 @@ class PlayersPage extends StatelessWidget {
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Consumer<PlayersProvider>(
-                builder: (context, PlayersProvider, child) => PlayersProvider
+            Consumer<EquiposProvider>(
+                builder: (context, EquiposProvider, child) => EquiposProvider
                         .isLoading
                     ? const Center(
                         child:
@@ -35,30 +36,27 @@ class PlayersPage extends StatelessWidget {
                       )
                     : Expanded(
                         child: ListView.builder(
-                          itemCount: PlayersProvider.players?.length,
+                          itemCount: 10,
                           itemBuilder: (context, index) {
-                            final player = PlayersProvider.players?[index];
-                            final photo = player?.photos[index];
+                            final equipos = EquiposProvider.equipos?[index];
+                            final players = equipos?.players[index];
                             return Column(
                               children: [
                                 ListTile(
                                   // trailing: Text('${player?.team.tName}'),
-                                  leading: Image.network(
-                                      'https://ligasabatinadefutbol.com.mx/media/bearleague/${photo?.phFilename}'),
+                                  leading: const Icon(Icons.person_2_rounded),
                                   title: Text(
-                                      '${player?.firstName} ${player?.lastName}'),
-                                  subtitle: Text('${player?.position.pNa2me}'),
+                                      '${players?.firstName}  ${players?.lastName}'),
+                                  subtitle: Text('${players?.nick}'),
                                 ),
                               ],
                             );
                           },
                         ),
-                      )
-                      )
+                      ))
           ],
         ),
       ),
     );
   }
 }
-
