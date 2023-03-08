@@ -44,7 +44,7 @@ class TorneosPages extends StatelessWidget {
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(10)),
                                 margin: const EdgeInsets.all(10),
-                                color: Color(0xFF4ECF84),
+                                color:const Color(0xFF4ECF84),
                                 clipBehavior: Clip.hardEdge,
                                 child: InkWell(
                                   splashColor:

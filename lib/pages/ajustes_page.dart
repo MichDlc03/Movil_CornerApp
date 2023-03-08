@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:liga_corner_app/widgets/config_Responsive.dart';
 
-
 class PagePerfil extends StatefulWidget {
   const PagePerfil({super.key});
 
@@ -17,15 +16,15 @@ class _PagePerfilState extends State<PagePerfil> {
     double baseWidth = 400;
     double fem = MediaQuery.of(context).size.width / baseWidth;
     double ffem = fem * 0.97;
-     String _title = 'Ajustes';
+    String _title = 'Ajustes';
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xFF4ECF84),
         elevation: 0,
         toolbarHeight: 80,
-        title:  Text(
+        title: Text(
           _title,
-          style: const TextStyle(color: Colors.black),
+          style: const TextStyle(color: Colors.white),
         ),
         centerTitle: true,
         scrolledUnderElevation: scrolledUnderElevation,
@@ -35,7 +34,7 @@ class _PagePerfilState extends State<PagePerfil> {
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const  [
+            children: const [
               CardNotify(),
               CardLenguaje(),
               Cardhelp(),
@@ -58,20 +57,19 @@ class CardInfoProfile extends StatelessWidget {
 
     return Container(
       decoration: const BoxDecoration(color: Color(0xFFE8E8E8)),
-      margin: const EdgeInsets.all(8),
+      margin: const EdgeInsets.all(5),
       width: SizeConfig.screenWidth,
       height: 70,
       child: Card(
         shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(12)),
+          borderRadius: BorderRadius.all(Radius.circular(10)),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 10),
-              child:
-                  Icon(Icons.person, color: Color(0xFF4ECF84)),
+              child: Icon(Icons.person, color: Color(0xFF4ECF84)),
             ),
             const Expanded(
               child: Text(
@@ -152,20 +150,19 @@ class CardNotify extends StatelessWidget {
   Widget build(BuildContext context) {
     SizeConfig(context);
     return Container(
-      margin: const EdgeInsets.all(8),
+      margin: const EdgeInsets.all(5),
       width: SizeConfig.screenWidth,
       height: 70,
       child: Card(
         shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(12)),
+          borderRadius: BorderRadius.all(Radius.circular(10)),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: const <Widget>[
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 10),
-              child: Icon(Icons.notifications,
-                  color: Color(0xFF4ECF84)),
+              child: Icon(Icons.notifications, color: Color(0xFF4ECF84)),
             ),
             Expanded(
               child: Text(
@@ -216,20 +213,19 @@ class CardLenguaje extends StatelessWidget {
   Widget build(BuildContext context) {
     SizeConfig(context);
     return Container(
-      margin: const EdgeInsets.all(8),
+      margin: const EdgeInsets.all(5),
       width: SizeConfig.screenWidth,
       height: 70,
       child: Card(
         shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(12)),
+          borderRadius: BorderRadius.all(Radius.circular(10)),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 10),
-              child:
-                  Icon(Icons.language, color: Color(0xFF4ECF84)),
+              child: Icon(Icons.language, color: Color(0xFF4ECF84)),
             ),
             const Expanded(
               child: Text(
@@ -241,7 +237,8 @@ class CardLenguaje extends StatelessWidget {
                 onPressed: () {
                   Navigator.pushNamed(context, '/lenguaje_pages');
                 },
-                icon: const Icon(Icons.arrow_forward_ios))
+                icon: const Icon(Icons.arrow_forward_ios,
+                    color: Color(0xE8E8E8E8)))
           ],
         ),
       ),
@@ -256,20 +253,19 @@ class Cardhelp extends StatelessWidget {
   Widget build(BuildContext context) {
     SizeConfig(context);
     return Container(
-      margin: const EdgeInsets.all(8),
+      margin: const EdgeInsets.all(5),
       width: SizeConfig.screenWidth,
       height: 70,
       child: Card(
         shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(12)),
+          borderRadius: BorderRadius.all(Radius.circular(10)),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: const <Widget>[
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 10),
-              child: Icon(Icons.help_outline,
-                  color: Color(0xFF4ECF84)),
+              child: Icon(Icons.help_outline, color: Color(0xFF4ECF84)),
             ),
             Expanded(
               child: Text(
@@ -279,7 +275,7 @@ class Cardhelp extends StatelessWidget {
             ),
             Padding(
               padding: EdgeInsets.all(5),
-              child: Icon(Icons.arrow_forward_ios),
+              child: Icon(Icons.arrow_forward_ios, color: Color(0xFE8E8E8E)),
             )
           ],
         ),
@@ -294,20 +290,19 @@ class CardLogOut extends StatelessWidget {
   Widget build(BuildContext context) {
     SizeConfig(context);
     return Container(
-      margin: const EdgeInsets.all(8),
+      margin: const EdgeInsets.all(5),
       width: SizeConfig.screenWidth,
       height: 70,
       child: Card(
         shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(12)),
+          borderRadius: BorderRadius.all(Radius.circular(10)),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: const <Widget>[
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 10),
-              child:
-                  Icon(Icons.logout, color: Color(0xFF4ECF84)),
+              child: Icon(Icons.logout, color: Color(0xFF4ECF84)),
             ),
             Expanded(
               child: Text(
@@ -322,7 +317,6 @@ class CardLogOut extends StatelessWidget {
   }
 }
 
-
 class InfoApp extends StatelessWidget {
   const InfoApp({super.key});
 
@@ -334,7 +328,7 @@ class InfoApp extends StatelessWidget {
       height: 70,
       child: const Card(
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(12)),
+            borderRadius: BorderRadius.all(Radius.circular(10)),
           ),
           child: AboutListTile(
             icon: Icon(

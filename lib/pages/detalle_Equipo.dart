@@ -4,7 +4,6 @@ import 'package:liga_corner_app/utils.dart';
 import 'package:provider/provider.dart';
 
 class PlayersPage extends StatelessWidget {
-  
   const PlayersPage({super.key});
   @override
   Widget build(BuildContext context) {

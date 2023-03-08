@@ -17,14 +17,16 @@ class PlayersProvider extends ChangeNotifier {
   Future fetchUser() async {
     try {
       final response = await http.get(Uri.parse(
-          'https://api.ligasabatinadefutbol.com.mx/api/players?team_id=4&limit=1'));
+          'https://api.ligasabatinadefutbol.com.mx/api/players?team_id=2&limit=1'));
 
       if (response.statusCode == 200) {
         // If the server did return a 200 OK response,
         // then parse the JSON.
         final json = jsonDecode(response.body);
+        logger.d(json['data']);
         final List<dynamic> data = json['data'];
         _players = data.map((e) => PlayersResponseDto.fromMap(e)).toList();
+        logger.d(_players);
         isLoading = false;
         notifyListeners();
       } else {

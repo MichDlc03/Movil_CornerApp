@@ -33,22 +33,21 @@ class _NavigationExampleState extends State<NavigationExample> {
             NavigationDestination(
               icon: Icon(
                 Icons.home,
-                color: Color.fromARGB(223, 19, 175, 27),
+                color: Color(0xFF4ECF84),
               ),
-              
               label: 'Home',
             ),
             NavigationDestination(
               icon: Icon(
                 Icons.notifications,
-                color: Color.fromARGB(223, 19, 175, 27),
+                color: Color(0xFF4ECF84),
               ),
               label: 'Notificaciones',
             ),
             NavigationDestination(
               icon: Icon(
                 Icons.settings,
-                color:Color.fromARGB(223, 19, 175, 27),
+                color: Color(0xFF4ECF84),
               ),
               label: 'Ajustes',
             ),
@@ -69,7 +68,7 @@ class _NavigationExampleState extends State<NavigationExample> {
         Container(
           color: const Color(0xFFE8E8E8),
           alignment: Alignment.center,
-          child:const PagePerfil(),
+          child: const PagePerfil(),
         ),
       ][currentPageIndex],
     );

@@ -86,9 +86,10 @@ class _MyTabBarState extends State with SingleTickerProviderStateMixin {
                             Tab(
                               text: 'Resultados',
                             ),
-                            Tab(
-                              text: 'Equipos',
-                            ),
+                            // Tab(
+
+                            //   text: 'Equipos',
+                            // ),
                           ],
                         ),
                       ),
@@ -102,7 +103,7 @@ class _MyTabBarState extends State with SingleTickerProviderStateMixin {
                     PartidosPage(),
                     TorneosPages(),
                     ResultadosPage(),
-                    TeamsPages()
+                    //TeamsPages()
                   ],
                 )),
               ],
