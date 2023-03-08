@@ -49,8 +49,7 @@ class TeamsPages extends StatelessWidget {
                                               borderRadius:
                                                   BorderRadius.circular(10)),
                                           margin: const EdgeInsets.all(10),
-                                          color: const Color.fromARGB(
-                                              223, 19, 175, 27),
+                                          color: const Color(0xFF4ECF84),
                                           clipBehavior: Clip.hardEdge,
                                           child: InkWell(
                                             splashColor: const Color.fromARGB(
@@ -98,12 +97,24 @@ class TeamsPages extends StatelessWidget {
                                                                   color: Color(
                                                                       0xFF4ECF84))),
                                                           Center(
-                                                              child: FadeInImage
-                                                                  .memoryNetwork(
+                                                              child: equipos
+                                                                          ?.tEmblem ==
+                                                                      null
+                                                                  ? Image.asset(
+                                                                      'images/logoLigaTorneo.jpg')
+                                                                  : FadeInImage
+                                                                      .memoryNetwork(
                                                                       placeholder:
                                                                           kTransparentImage,
                                                                       image:
-                                                                          'https://ligasabatinadefutbol.com.mx/media/bearleague/${equipos?.tEmblem}'))
+                                                                          'https://ligasabatinadefutbol.com.mx/media/bearleague/${equipos?.tEmblem}',
+                                                                      imageErrorBuilder: (context,
+                                                                          error,
+                                                                          stackTrace) {
+                                                                        return Image.asset(
+                                                                            'images/logoLigaTorneo.jpg');
+                                                                      },
+                                                                    ))
                                                         ],
                                                       ) // ),
                                                       ),

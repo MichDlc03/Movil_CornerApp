@@ -138,7 +138,7 @@ class CardNameUser extends StatelessWidget {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 10),
               child:
-                  Icon(Icons.person, color: Color.fromARGB(188, 20, 237, 67)),
+                  Icon(Icons.person, color: Color(0xFF4ECF84)),
             ),
             Expanded(
               child: Text(
@@ -175,7 +175,7 @@ class NumberPhone extends StatelessWidget {
           children: const <Widget>[
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 10),
-              child: Icon(Icons.call, color: Color.fromARGB(188, 20, 237, 67)),
+              child: Icon(Icons.call, color: Color(0xFF4ECF84)),
             ),
             Expanded(
               child: Text(
@@ -212,7 +212,7 @@ class MailProfile extends StatelessWidget {
           children: const <Widget>[
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 10),
-              child: Icon(Icons.mail, color: Color.fromARGB(188, 20, 237, 67)),
+              child: Icon(Icons.mail, color: Color(0xFF4ECF84)),
             ),
             Expanded(
               child: Text(

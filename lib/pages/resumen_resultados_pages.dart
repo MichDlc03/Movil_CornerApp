@@ -17,11 +17,10 @@ class ResumenResultados extends StatelessWidget {
     return ChangeNotifierProvider(
         create: (context) => PartidosProvider()..fetchUsers(),
         child: Scaffold(
-            backgroundColor: const Color(0xffe8e8e8),
             appBar: AppBar(
               elevation: 0,
               centerTitle: true,
-              backgroundColor: const Color.fromARGB(223, 19, 175, 27),
+              backgroundColor: const Color(0xFF4ECF84),
               title: Center(
                 child: Text('Resumen de partido',
                     style: SafeGoogleFont('Nunito',
@@ -39,10 +38,7 @@ class ResumenResultados extends StatelessWidget {
                               color: Color(0xFF4ECF84),
                             ))
                           : Expanded(
-                              child: Padding(
-                                padding: const EdgeInsets.all(20),
-                                child: CardResumenPartido(partidos: partidos),
-                              ),
+                              child: CardResumenPartido(partidos: partidos),
                             ))
             ])));
   }
@@ -77,97 +73,112 @@ class CardResumenPartido extends StatelessWidget {
         const SizedBox(
           height: 10,
         ),
-        SizedBox(
-          width: SizeConfig.screenWidth,
-          height: SizeConfig.blockSizeVertical(10),
-          child: Row(
-            // mainAxisAlignment:
-            //     MainAxisAlignment.center,
-            children: [
-              Card(
-                color: const Color(0xffffffff),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10)),
-                child: Padding(
-                  padding: const EdgeInsets.all(5),
-                  child: SizedBox(
-                    width: SizeConfig.blockSizeHorizontal(28),
-                    height: 100,
-                    child: FittedBox(
-                      fit: BoxFit.cover,
-                      child: Image.network(
-                          'https://ligasabatinadefutbol.com.mx/media/bearleague/${partidos?.team1.tEmblem}'),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15.0),
+          child: SizedBox(
+            width: SizeConfig.screenWidth,
+            height: SizeConfig.blockSizeVertical(10),
+            child: Row(
+              // mainAxisAlignment:
+              //     MainAxisAlignment.center,
+              children: [
+                Expanded(
+                  child: Card(
+                    color: const Color(0xffffffff),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                    child: Padding(
+                      padding: const EdgeInsets.all(5),
+                      child: SizedBox(
+                        width: SizeConfig.blockSizeHorizontal(28),
+                        height: SizeConfig.blockSizeVertical(35),
+                        child: partidos?.team2.tEmblem == null
+                            ? Image.asset('images/logoLigaTorneo.jpg')
+                            : Image.network(
+                                'https://ligasabatinadefutbol.com.mx/media/bearleague/${partidos?.team1.tEmblem}',
+                                errorBuilder: (context, error, stackTrace) {
+                                  return Image.asset(
+                                      'images/logoLigaTorneo.jpg');
+                                },
+                              ),
+                      ),
                     ),
                   ),
                 ),
-              ),
-              SizedBox(
-                width: SizeConfig.blockSizeHorizontal(2),
-              ),
-              SizedBox(
-                width: 20,
-                height: 100,
-                child: Center(
-                  child: Text(
-                    '${partidos?.score1}',
-                    style: SafeGoogleFont('Nunito',
-                        fontWeight: FontWeight.bold, fontSize: 30),
-                    textAlign: TextAlign.center,
-                  ),
+                SizedBox(
+                  width: SizeConfig.blockSizeHorizontal(2),
                 ),
-              ),
-              SizedBox(
-                width: SizeConfig.blockSizeHorizontal(2),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                child: SizedBox(
-                  width: 10,
+                SizedBox(
+                  width: 20,
                   height: 100,
                   child: Center(
                     child: Text(
-                      ':',
+                      '${partidos?.score1}',
+                      style: SafeGoogleFont('Nunito',
+                          fontWeight: FontWeight.bold, fontSize: 30),
                       textAlign: TextAlign.center,
-                      style: SafeGoogleFont('Nunito',
-                          fontWeight: FontWeight.bold, fontSize: 30),
                     ),
                   ),
                 ),
-              ),
-              SizedBox(
-                width: SizeConfig.blockSizeHorizontal(2),
-              ),
-              SizedBox(
-                width: 20,
-                height: 100,
-                child: Center(
-                  child: Text('${partidos?.score2}',
-                      style: SafeGoogleFont('Nunito',
-                          fontWeight: FontWeight.bold, fontSize: 30),
-                      textAlign: TextAlign.center),
+                SizedBox(
+                  width: SizeConfig.blockSizeHorizontal(2),
                 ),
-              ),
-              SizedBox(
-                width: SizeConfig.blockSizeHorizontal(2),
-              ),
-              Card(
-                color: const Color(0xffffffff),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10)),
-                child: Padding(
-                  padding: const EdgeInsets.all(5),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 4.0),
                   child: SizedBox(
-                    width: SizeConfig.blockSizeHorizontal(28),
+                    width: 10,
                     height: 100,
-                    child: FittedBox(
-                      fit: BoxFit.cover,
-                      child: Image.network(
-                          'https://ligasabatinadefutbol.com.mx/media/bearleague/${partidos?.team2.tEmblem}'),
+                    child: Center(
+                      child: Text(
+                        ':',
+                        textAlign: TextAlign.center,
+                        style: SafeGoogleFont('Nunito',
+                            fontWeight: FontWeight.bold, fontSize: 30),
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ],
+                SizedBox(
+                  width: SizeConfig.blockSizeHorizontal(2),
+                ),
+                SizedBox(
+                  width: 20,
+                  height: 100,
+                  child: Center(
+                    child: Text('${partidos?.score2}',
+                        style: SafeGoogleFont('Nunito',
+                            fontWeight: FontWeight.bold, fontSize: 30),
+                        textAlign: TextAlign.center),
+                  ),
+                ),
+                SizedBox(
+                  width: SizeConfig.blockSizeHorizontal(2),
+                ),
+                Expanded(
+                  child: Card(
+                    color: const Color(0xffffffff),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                    child: Padding(
+                      padding: const EdgeInsets.all(5),
+                      child: SizedBox(
+                        width: SizeConfig.blockSizeHorizontal(28),
+                        height: 100,
+                        child: partidos?.team2.tEmblem == null
+                            ? Image.asset('images/logoLigaTorneo.jpg')
+                            : Image.network(
+                                'https://ligasabatinadefutbol.com.mx/media/bearleague/${partidos?.team2.tEmblem}',
+                                errorBuilder: (context, error, stackTrace) {
+                                  return Image.asset(
+                                      'images/logoLigaTorneo.jpg');
+                                },
+                              ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
         const SizedBox(
@@ -185,7 +196,7 @@ class CardResumenPartido extends StatelessWidget {
                     decoration: const BoxDecoration(
                         border: Border(
                             left: BorderSide(
-                                color: Color.fromARGB(223, 19, 175, 27), width: 15))),
+                                color: Color(0xFF4ECF84), width: 15))),
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Row(
@@ -220,7 +231,7 @@ class CardResumenPartido extends StatelessWidget {
                     decoration: const BoxDecoration(
                         border: Border(
                             left: BorderSide(
-                                color: Color.fromARGB(223, 19, 175, 27), width: 15))),
+                                color: Color(0xFF4ECF84), width: 15))),
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Row(
@@ -254,7 +265,7 @@ class CardResumenPartido extends StatelessWidget {
                     decoration: const BoxDecoration(
                         border: Border(
                             left: BorderSide(
-                                color: Color.fromARGB(223, 19, 175, 27), width: 15))),
+                                color: Color(0xFF4ECF84), width: 15))),
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Row(

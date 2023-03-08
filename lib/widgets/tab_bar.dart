@@ -40,7 +40,7 @@ class _MyTabBarState extends State with SingleTickerProviderStateMixin {
           height: 50,
           width: 120,
         ),
-        backgroundColor: const Color.fromARGB(223, 19, 175, 27),
+        backgroundColor: Colors.transparent,
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -63,8 +63,7 @@ class _MyTabBarState extends State with SingleTickerProviderStateMixin {
                               MaterialStateProperty.resolveWith<Color?>(
                             (Set<MaterialState> states) {
                               if (states.contains(MaterialState.hovered)) {
-                                return Color.fromARGB(
-                                    255, 82, 244, 101); //<-- SEE HERE
+                                return const Color(0xFF4ECF84); //<-- SEE HERE
                               }
                               return null;
                             },
@@ -73,7 +72,7 @@ class _MyTabBarState extends State with SingleTickerProviderStateMixin {
                           labelColor: const Color.fromARGB(255, 255, 255, 255),
                           indicatorWeight: 2,
                           indicator: BoxDecoration(
-                            color: const Color.fromARGB(223, 19, 175, 27),
+                            color: const Color(0xFF4ECF84),
                             borderRadius: BorderRadius.circular(10),
                           ),
                           controller: tabController,

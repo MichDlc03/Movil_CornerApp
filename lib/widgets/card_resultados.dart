@@ -72,11 +72,11 @@ class CardResultados extends StatelessWidget {
   child: FittedBox(
     fit: BoxFit.cover,
     child: plays?.team1.tEmblem == null
-        ? Image.asset('images/logoLigaTorneo.jpg')
+        ? Image.asset('images/default_image_team.png')
         : Image.network(
             'https://ligasabatinadefutbol.com.mx/media/bearleague/${plays?.team1.tEmblem}',
             errorBuilder: (BuildContext context, Object exception, StackTrace? stackTrace) {
-              return Image.asset('images/logoLigaTorneo.jpg');
+              return Image.asset('images/default_image_team.png');
             },
           ),
   ),
@@ -112,11 +112,11 @@ class CardResultados extends StatelessWidget {
   child: FittedBox(
     fit: BoxFit.cover,
     child: plays?.team1.tEmblem == null
-        ? Image.asset('images/logoLigaTorneo.jpg')
+        ? Image.asset('images/default_image_team.png')
         : Image.network(
             'https://ligasabatinadefutbol.com.mx/media/bearleague/${plays?.team2.tEmblem}',
             errorBuilder: (BuildContext context, Object exception, StackTrace? stackTrace) {
-              return Image.asset('images/logoLigaTorneo.jpg');
+              return Image.asset('images/default_image_team.png');
             },
           ),
   ),
@@ -149,7 +149,7 @@ class CardResultados extends StatelessWidget {
             width: SizeConfig.screenWidth,
             height: SizeConfig.blockSizeHorizontal(12),
             decoration: const BoxDecoration(
-              color: Color.fromARGB(223, 19, 175, 27),
+              color: Color(0xFF4ECF84),
               borderRadius: BorderRadius.only(
                 bottomRight: Radius.circular(10),
                 bottomLeft: Radius.circular(10),

@@ -34,7 +34,7 @@ class CardTitle extends StatelessWidget {
             decoration: const BoxDecoration(
                 border: Border(
                     left: BorderSide(
-                        color: Color.fromARGB(223, 19, 175, 27), width: 15))),
+                        color: Color(0xFF4ECF84), width: 25))),
             child: Padding(
               padding: const EdgeInsets.all(5),
               child: Row(
@@ -91,7 +91,7 @@ class CardTitleResumen extends StatelessWidget {
             decoration:  const BoxDecoration(
                 border: Border(
                     left: BorderSide(
-                        color: Color.fromARGB(223, 19, 175, 27), width: 15))),
+                        color: Color(0xFF4ECF84), width: 25))),
             child: Padding(
               padding: const EdgeInsets.all(5),
               child: Row(
@@ -149,7 +149,7 @@ class CardTitlePartidos extends StatelessWidget {
             decoration:const BoxDecoration(
                 border:  Border(
                     left: BorderSide(
-                        color: Color.fromARGB(223, 19, 175, 27), width: 15))),
+                        color: Color(0xFF4ECF84), width: 25))),
             child: Padding(
               padding: const EdgeInsets.all(5),
               child: Row(

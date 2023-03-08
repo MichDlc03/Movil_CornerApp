@@ -95,7 +95,7 @@ class PartidosPage extends StatelessWidget {
                                                                           .tEmblem ==
                                                                       null
                                                                   ? Image.asset(
-                                                                      'images/logoLigaTorneo.jpg')
+                                                                      'images/default_image_team.png')
                                                                   : Image
                                                                       .network(
                                                                       'https://ligasabatinadefutbol.com.mx/media/bearleague/${plays?.team1.tEmblem}',
@@ -105,7 +105,7 @@ class PartidosPage extends StatelessWidget {
                                                                           StackTrace?
                                                                               stackTrace) {
                                                                         return Image.asset(
-                                                                            'images/logoLigaTorneo.jpg');
+                                                                            'images/default_image_team.png');
                                                                       },
                                                                     ),
                                                             )),
@@ -152,7 +152,7 @@ class PartidosPage extends StatelessWidget {
                                                                         .tEmblem ==
                                                                     null
                                                                 ? Image.asset(
-                                                                    'images/logoLigaTorneo.jpg')
+                                                                    'images/default_image_team.png')
                                                                 : Image.network(
                                                                     'https://ligasabatinadefutbol.com.mx/media/bearleague/${plays?.team2.tEmblem}',
                                                                     errorBuilder: (BuildContext
@@ -163,7 +163,7 @@ class PartidosPage extends StatelessWidget {
                                                                             stackTrace) {
                                                                       return Image
                                                                           .asset(
-                                                                              'images/logoLigaTorneo.jpg');
+                                                                              'images/default_image_team.png');
                                                                     },
                                                                   ),
                                                           )),
@@ -240,8 +240,7 @@ class PartidosPage extends StatelessWidget {
                                           width: double.infinity,
                                           height: 41 * fem,
                                           decoration: const BoxDecoration(
-                                            color: Color.fromARGB(
-                                                223, 19, 175, 27),
+                                            color: Color(0xFF4ECF84),
                                             borderRadius: BorderRadius.only(
                                               bottomRight: Radius.circular(10),
                                               bottomLeft: Radius.circular(10),

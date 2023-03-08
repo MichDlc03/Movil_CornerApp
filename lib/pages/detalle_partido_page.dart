@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:liga_corner_app/dtos/providers/partidos_provider.dart';
 import 'package:liga_corner_app/dtos/responses/requests/partidos_response_dto.dart';
 import 'package:liga_corner_app/utils.dart';
+import 'package:liga_corner_app/widgets/config_Responsive.dart';
 import 'package:provider/provider.dart';
 
 class DetetallesPartido extends StatelessWidget {
@@ -10,14 +11,13 @@ class DetetallesPartido extends StatelessWidget {
   const DetetallesPartido({super.key, required this.partidos});
   @override
   Widget build(BuildContext context) {
+    SizeConfig(context);
     double baseWidth = 400;
     double fem = MediaQuery.of(context).size.width / baseWidth;
     double ffem = fem * 0.97;
     return ChangeNotifierProvider(
         create: (context) => PartidosProvider()..fetchUsers(),
-        child: Scaffold(
-            backgroundColor: const Color(0xffe8e8e8),
-            appBar: AppBar(
+        child: Scaffold(            appBar: AppBar(
               elevation: 0,
               centerTitle: true,
               backgroundColor: const Color(0xFF4ECF84),
@@ -42,13 +42,13 @@ class DetetallesPartido extends StatelessWidget {
                                 padding: const EdgeInsets.all(20),
                                 child: Padding(
                                   padding: const EdgeInsets.symmetric(
-                                      vertical: 30, horizontal: 35),
+                                      vertical: 30, horizontal: 20),
                                   child: Center(
                                     child: Column(
                                       // mainAxisAlignment: MainAxisAlignment.center,
                                       children: [
                                         SizedBox(
-                                          width: double.infinity,
+                                          width: SizeConfig.screenWidth,
                                           height: 70,
                                           child: Text(
                                             '${partidos?.team1.tName}  vs  ${partidos?.team2.tName}',
@@ -62,66 +62,93 @@ class DetetallesPartido extends StatelessWidget {
                                         const SizedBox(
                                           height: 10,
                                         ),
-                                        Row(
-                                          // mainAxisAlignment:
-                                          //     MainAxisAlignment.center,
-                                          children: [
-                                            Card(
-                                              color: const Color(0xffffffff),
-                                              shape: RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          10)),
-                                              child: Padding(
-                                                padding:
-                                                    const EdgeInsets.all(5),
+                                        SizedBox(
+                                          width: SizeConfig.screenWidth,
+                                          child: Row(
+                                            children: [
+                                              Expanded(
+                                                child: Card(
+                                                  color: const Color(0xffffffff),
+                                                  shape: RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10)),
+                                                  child: Padding(
+                                                    padding:
+                                                        const EdgeInsets.all(5),
+                                                    child: SizedBox(
+                                                      width: SizeConfig
+                                                          .blockSizeHorizontal(28),
+                                                      height: 100,
+                                                      child: partidos?.team1
+                                                                  .tEmblem ==
+                                                              null
+                                                          ? Image.asset(
+                                                              'images/logoLigaTorneo.jpg')
+                                                          : Image.network(
+                                                              'https://ligasabatinadefutbol.com.mx/media/bearleague/${partidos?.team1.tEmblem}',
+                                                              errorBuilder:
+                                                                  (context, error,
+                                                                      stackTrace) {
+                                                                return Image.asset(
+                                                                    'images/logoLigaTorneo.jpg');
+                                                              },
+                                                            ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),                                             
+                                              Padding(
+                                                padding: const EdgeInsets.symmetric(horizontal:20),
                                                 child: SizedBox(
-                                                  width: 100,
-                                                  height: 150,
-                                                  child: Image.network(
-                                                      'https://ligasabatinadefutbol.com.mx/media/bearleague/${partidos?.team1.tEmblem}'),
+                                                  width: SizeConfig.blockSizeHorizontal(10),
+                                                  height: 100,
+                                                  child: Center(
+                                                    child: Text(
+                                                      'VS',
+                                                      textAlign: TextAlign.center,
+                                                      style: SafeGoogleFont(
+                                                          'Nunito',
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontSize: 25),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),                                               
+                                              Expanded(
+                                                child: Card(
+                                                  color: const Color(0xffffffff),
+                                                  shape: RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10)),
+                                                  child: Padding(
+                                                    padding:
+                                                        const EdgeInsets.all(5),
+                                                    child: SizedBox(
+                                                      width: SizeConfig.blockSizeHorizontal(28),
+                                                      height: 100,
+                                                      child: partidos?.team2
+                                                                  .tEmblem ==
+                                                              null
+                                                          ? Image.asset(
+                                                              'images/logoLigaTorneo.jpg')
+                                                          : Image.network(
+                                                              'https://ligasabatinadefutbol.com.mx/media/bearleague/${partidos?.team2.tEmblem}',
+                                                              errorBuilder:
+                                                                  (context, error,
+                                                                      stackTrace) {
+                                                                return Image.asset(
+                                                                    'images/logoLigaTorneo.jpg');
+                                                              },
+                                                            ),
+                                                    ),
+                                                  ),
                                                 ),
                                               ),
-                                            ),
-                                            const SizedBox(
-                                              width: 2,
-                                            ),
-                                            SizedBox(
-                                              width: 50,
-                                              height: 100,
-                                              child: Center(
-                                                child: Text(
-                                                  'VS',
-                                                  textAlign: TextAlign.center,
-                                                  style: SafeGoogleFont(
-                                                      'Nunito',
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      fontSize: 30),
-                                                ),
-                                              ),
-                                            ),
-                                            const SizedBox(
-                                              width: 2,
-                                            ),
-                                            Card(
-                                              color: const Color(0xffffffff),
-                                              shape: RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          10)),
-                                              child: Padding(
-                                                padding:
-                                                    const EdgeInsets.all(5),
-                                                child: SizedBox(
-                                                  width: 100,
-                                                  height: 150,
-                                                  child: Image.network(
-                                                      'https://ligasabatinadefutbol.com.mx/media/bearleague/${partidos?.team2.tEmblem}'),
-                                                ),
-                                              ),
-                                            ),
-                                          ],
+                                            ],
+                                          ),
                                         ),
                                         const SizedBox(
                                           height: 50,

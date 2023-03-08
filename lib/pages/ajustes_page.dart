@@ -20,7 +20,7 @@ class _PagePerfilState extends State<PagePerfil> {
      String _title = 'Ajustes';
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(223, 19, 175, 27),
+        backgroundColor: const Color(0xFF4ECF84),
         elevation: 0,
         toolbarHeight: 80,
         title:  Text(
@@ -71,7 +71,7 @@ class CardInfoProfile extends StatelessWidget {
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 10),
               child:
-                  Icon(Icons.person, color: Color.fromARGB(188, 20, 237, 67)),
+                  Icon(Icons.person, color: Color(0xFF4ECF84)),
             ),
             const Expanded(
               child: Text(
@@ -165,7 +165,7 @@ class CardNotify extends StatelessWidget {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 10),
               child: Icon(Icons.notifications,
-                  color: Color.fromARGB(223, 19, 175, 27)),
+                  color: Color(0xFF4ECF84)),
             ),
             Expanded(
               child: Text(
@@ -229,7 +229,7 @@ class CardLenguaje extends StatelessWidget {
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 10),
               child:
-                  Icon(Icons.language, color: Color.fromARGB(223, 19, 175, 27)),
+                  Icon(Icons.language, color: Color(0xFF4ECF84)),
             ),
             const Expanded(
               child: Text(
@@ -269,7 +269,7 @@ class Cardhelp extends StatelessWidget {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 10),
               child: Icon(Icons.help_outline,
-                  color: Color.fromARGB(223, 19, 175, 27)),
+                  color: Color(0xFF4ECF84)),
             ),
             Expanded(
               child: Text(
@@ -307,7 +307,7 @@ class CardLogOut extends StatelessWidget {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 10),
               child:
-                  Icon(Icons.logout, color: Color.fromARGB(223, 19, 175, 27)),
+                  Icon(Icons.logout, color: Color(0xFF4ECF84)),
             ),
             Expanded(
               child: Text(
@@ -339,7 +339,7 @@ class InfoApp extends StatelessWidget {
           child: AboutListTile(
             icon: Icon(
               Icons.info_outline,
-              color: Color.fromARGB(223, 19, 175, 27),
+              color: Color(0xFF4ECF84),
             ),
             applicationIcon: FlutterLogo(),
             applicationLegalese: 'Legalese',
